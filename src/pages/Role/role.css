@@ -1,0 +1,61 @@
+*{
+    font-family: 'Readex Pro', sans-serif;
+}
+
+.role--selection {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(23, 1, 23, 0.5); 
+    border-radius: 15px;
+    padding: 20px;
+    align-items: center;
+}
+
+.role--login{
+    color: rgba(230, 246, 125, 1);
+    padding: 20px;
+}
+
+.role--button{
+    font-size: 20px;
+    font-weight: bolder;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 15px;
+    width: 70%;
+    border: 0px;
+    background-color: rgb(239,239,239);
+    text-decoration: none;
+    color: black;
+}
+
+.role--bofficer{
+    cursor: pointer;
+}
+
+.role--collector{
+    cursor: pointer;
+}
+
+.role--register, .role--register .role--register-button{
+    margin-top: 50px;    
+    font-weight: bolder;
+    color: white;
+}
+
+.role--register-button{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.role--register-button:hover{
+    color: #18EF21;
+}
+
+.role--button:hover{
+    opacity: 0.8;
+}
+
+
+

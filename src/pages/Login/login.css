@@ -1,0 +1,46 @@
+*{
+    font-family: 'Readex Pro', sans-serif;
+}
+
+.login--account{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(23, 1, 23, 0.5); 
+    border-radius: 15px;
+    padding: 20px;
+    align-items: center;
+}
+.login--input{
+    background-color: #B1FDB0;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    font-size: 30px;
+    width: 300px;
+    border-radius: 10px;
+    height: 60px;
+    
+}
+
+.login--input::placeholder{
+    color: #A69191;
+}
+
+.login--button{
+    width: 175px;
+    height: 35px;
+    margin-top: 20px;
+    border-radius: 10px;
+    font-size: 25px;
+    text-align: center;
+    align-items: center;
+    border: 0px;
+    cursor: pointer;
+}
+
+.login--button:hover{
+    opacity: 0.8;
+}
+.login--User{
+    margin-top: 20px;
+}

@@ -1,3 +1,16 @@
+*{
+  margin: 0;
+  box-sizing: border-box; 
+}
+
+html,body{
+  height: 100%;
+}
+
+#root{
+  height: 100%;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +18,56 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.my--app{
+  height: 100%;
+  min-height: 800px;
+  min-width: 500px;
+}
+
+
+.uwc--background {
+  background-image: url("./assets/UWC-background.png");
+  background-size: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
+
+
+.uwc--title {
+  color: white;
+  font-size: 100px;
+  font-weight: 600;
+  top: 0;
+  height: 132px;
+  position: absolute;
+  margin-top: 40px;
+}
+
+.uwc--logo {
+  text-align: center;
+  background-color: #18EF21;
+  border-radius: 50%;
+  position: absolute;
+  top: 136px;
+  margin-top: 40px;
+}
+
+.uwc--logo-img {
+  width: 100px;
+  padding: 20px;
 }
