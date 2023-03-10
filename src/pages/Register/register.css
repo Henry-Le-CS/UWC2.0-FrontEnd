@@ -1,34 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300&display=swap');
 
-.auth-modal {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 360px;
-    height: 600px;
-    background-color: rgb(255, 255, 255);
-    border-radius: 10px;
-    padding: 40px;
-}
-
-.auth-modal .close-icon {
-    float: right;
-}
-
-.auth-modal form {
+.register--selection {
+    margin-top: 40px;
     display: flex;
     flex-direction: column;
+    background-color: rgba(23, 1, 23, 0.5); 
+    border-radius: 15px;
+    padding: 20px;
+    align-items: center;
 }
 
+.register--selection form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-.auth-modal input[type=password],
-.auth-modal input[type=email] {
-    padding: 8px;
+.register--selection input[type=password],
+.register--selection input[type=email] {
+    padding: 10px;
     margin: 8px;
     font-size: 17px;
+    border-radius: 12px;
 }
 
 .secondary-button {
@@ -73,16 +66,6 @@ h2 {
     font-family: 'Readex Pro', sans-serif;
 }
 
-.role--selection {
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column;
-    background-color: rgba(23, 1, 23, 0.5); 
-    border-radius: 15px;
-    padding: 20px;
-    align-items: center;
-}
-
 .role--login{
     color: rgba(230, 246, 125, 1);
     padding: 20px;
@@ -101,7 +84,9 @@ h2 {
     color: black;
 }
 
-
+.open--paragraph{
+    color: white
+}
 
 
 

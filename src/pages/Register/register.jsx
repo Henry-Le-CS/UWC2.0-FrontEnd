@@ -21,10 +21,10 @@ const Register = ({setShowModal, isSignUp}) => {
             <div className="uwc--logo">
                 <img src={require("../../assets/UWC-logo.png")} className="uwc--logo-img"></img>
             </div>
-            <div className="register">
-                <div className="close-icon" onClick={handleClick}>x</div>
-                <h2>{isSignUp ? 'CREATE ACCOUNT' : 'LOG IN'}</h2>
-                <p>By clicking Log In, you agree to our terms. Learn how we process your data in our Privacy Policy and Cookie Policy.</p>
+            <div className="register--selection">
+                <div className="open--paragraph">
+                    <p>By clicking Log In, you agree to our terms. Learn how we process your data in our Privacy Policy and Cookie Policy.</p>
+                </div>
                 <form onSubmit={handleSubmit}>
                     <input
                         type="email"
@@ -53,11 +53,13 @@ const Register = ({setShowModal, isSignUp}) => {
                         onChange={(e) => setConfirmPassword(e.target.value)}
                     />
 
-                    <input className='secondary-button' type='submit' />
+                    <input className='role--button' type='submit' />
                     <p>{error}</p>
 
                 </form>
             </div>
+
+
         </div>
     )
 }
