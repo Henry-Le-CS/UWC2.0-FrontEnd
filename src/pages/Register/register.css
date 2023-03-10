@@ -8,8 +8,18 @@
     border-radius: 15px;
     padding: 20px;
     align-items: center;
+    
 }
 
+.register--container .uwc--background {
+    max-height: 100vh;
+}
+
+.register--container {
+    max-height: 100vh;
+    overflow: auto;
+}
+  
 .register--selection form {
     display: flex;
     flex-direction: column;
@@ -25,7 +35,7 @@
     border: none;
     background-color: rgb(203, 252, 203);
     color: black;
-    width: 120%;
+    width: 65%;
 }
 
 .register--selection input[type=password]:focus,
@@ -40,7 +50,6 @@
     color: #FFFFFF;
 }
 
-
 .role--button {
     color: #FFFFFF;
     background-color: #4CAF50;
@@ -52,6 +61,7 @@
     margin: 6px;
     cursor: pointer;
     transition: all 0.3s ease;
+    width: 30%;
 }
 
 .role--button:hover {
@@ -59,7 +69,6 @@
     color: #4CAF50;
     border: 2px solid #4CAF50;
 }
-
 
 body {
     margin: 0;
@@ -70,6 +79,3 @@ body {
 .open--paragraph{
     color: white
 }
-
-
-

@@ -4,11 +4,11 @@
 }
 
 html,body{
-  height: 100%;
+  height: 100vh;
 }
 
 #root{
-  height: 100%;
+  height: 100vh;
 }
 
 body {
@@ -18,7 +18,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 100%;
+  height: 100vh;
 }
 
 code {
@@ -27,24 +27,22 @@ code {
 }
 
 .my--app{
-  height: 100%;
+  height: 100vh;
 }
 
 
 .uwc--background {
   background-image: url("./assets/UWC-background.png");
-  background-size: 100%;
-  height: 100%;
+  background-size: cover;
+  height: 100vh;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
-  position: relative;
-  min-height: 900px;
   min-width: 500px;
+  overflow-y: scroll;
 }
 
 
@@ -52,17 +50,14 @@ code {
   color: white;
   font-size: 100px;
   font-weight: 600;
-  top: 0;
   height: 132px;
-  position: absolute;
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
 .uwc--logo {
   text-align: center;
   background-color: #18EF21;
   border-radius: 50%;
-  position: absolute;
   top: 136px;
   margin-top: 40px; 
 }
