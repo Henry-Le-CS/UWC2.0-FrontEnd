@@ -23,7 +23,7 @@ const Register = ({setShowModal, isSignUp}) => {
             </div>
             <div className="register--selection">
                 <div className="open--paragraph">
-                    <p>By clicking Log In, you agree to our terms. Learn how we process your data in our Privacy Policy and Cookie Policy.</p>
+                    <p>By clicking Log In, you agree to our terms. <br></br> Learn how we process your data in our Privacy Policy and Cookie Policy.</p>
                 </div>
                 <form onSubmit={handleSubmit}>
                     <input
