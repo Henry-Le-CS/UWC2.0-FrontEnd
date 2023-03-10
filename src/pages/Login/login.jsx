@@ -1,13 +1,15 @@
 import { Button } from "bootstrap";
-import { Routes, Route, Link } from "react-router-dom"
+import { Routes, Route, Link, Navigate, useLocation} from "react-router-dom"
 import React from "react";
 import "./login.css"
 import { ValidateAccount } from "../../utils/validate.js"
 export default function Login(props) {
+    const location = useLocation()
+    const { from } = location.state // to check if the the user say they're BO or Worker
     const [currentAccount, setCurrentAccount] = React.useState({
         account: "",
         password: "",
-        isBO: false,
+        isBO: from == 'BOBtn' ? true : false,
     })
     const [isPassword, setIsPassword] = React.useState(2) // 2 <-> not click login button yet
     // 0 <-> incorrect password, 1 <-> correct password
