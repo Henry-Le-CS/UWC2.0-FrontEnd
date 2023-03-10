@@ -44,3 +44,10 @@
 .login--User{
     margin-top: 20px;
 }
+
+.login--incorrect{
+    color: red;
+}
+.login--correct{
+    color: #18EF21;
+}
