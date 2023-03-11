@@ -1,7 +1,7 @@
 import { Button } from "bootstrap";
 import React, { useState } from "react";
 import "./register.css"
-const Register = ({setShowModal, isSignUp}) => {
+const Register = ({ setShowModal, isSignUp }) => {
     const [email, setEmail] = useState(null)
     const [password, setPassword] = useState(null)
     const [confirmPassword, setConfirmPassword] = useState(null)
@@ -22,15 +22,13 @@ const Register = ({setShowModal, isSignUp}) => {
                 <img src={require("../../assets/UWC-logo.png")} className="uwc--logo-img"></img>
             </div>
             <div className="register--selection">
-                <div className="open--paragraph">
-                    <p>By clicking Log In, you agree to our terms. <br></br> Learn how we process your data in our Privacy Policy and Cookie Policy.</p>
-                </div>
+
                 <form onSubmit={handleSubmit}>
                     <input
                         type="email"
                         id="email"
                         name="email"
-                        placeholder='email'
+                        placeholder='Email'
                         required={true}
                         onChange={(e) => setEmail(e.target.value)}
                     />
@@ -39,7 +37,7 @@ const Register = ({setShowModal, isSignUp}) => {
                         type="password"
                         id="password"
                         name="password"
-                        placeholder='password'
+                        placeholder='Password'
                         required={true}
                         onChange={(e) => setPassword(e.target.value)}
                     />
@@ -48,12 +46,12 @@ const Register = ({setShowModal, isSignUp}) => {
                         type="password"
                         id="password-check"
                         name="password-check"
-                        placeholder='confirm password'
+                        placeholder='Confirm password'
                         required={true}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                     />
-
-                    <input className='role--button' type='submit' />
+                        <p className="register--policy">By clicking Register, you agree to our terms. <br></br> Learn how we process your data in our Privacy Policy and Cookie Policy.</p>
+                    <input className='register--button' type='submit' value='Register' />
                     <p>{error}</p>
 
                 </form>
