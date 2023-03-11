@@ -34,16 +34,17 @@ code {
 .uwc--background {
   background-image: url("./assets/UWC-background.png");
   background-size: cover;
+  height: 100vh;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
   min-width: 500px;
-  padding:0px;
+  background-attachment: fixed;
 }
+
 
 
 .uwc--title {

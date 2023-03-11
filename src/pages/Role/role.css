@@ -23,7 +23,7 @@
     padding: 10px;
     margin-top: 15px;
     border-radius: 15px;
-    width: 80%;
+    width: 100%;
     border: 0px;
     background-color: rgb(183, 221, 243);
     text-decoration: none;
@@ -70,8 +70,9 @@
     border: 2px solid #4CAF50;
 }
 
-.role--button:hover {
-    background-color: #FFFFFF;
-    color: #4CAF50;
-    
+.role--container{
+    text-align: center;
 }
+
+
+

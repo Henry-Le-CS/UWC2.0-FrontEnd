@@ -25,7 +25,7 @@ export default function Login(props) {
         {
             UserName: "Hieu Le",
             account: "henryle@hcmut.edu.vn",
-            password: "henryle",
+            password: "henryle@hcmut.edu.vn",
             isBO: true,
         },
         {  
@@ -57,8 +57,6 @@ export default function Login(props) {
         })
     }
 
-    
-
     function handleSubmit(){
         console.log(currentAccount)
         if(ValidateAccount(currentAccount, currentAccount.isBO ? BOaccount : Workeraccount)){
@@ -66,7 +64,6 @@ export default function Login(props) {
         }
         else setIsPassword(0)
     }
-
 
     return (
         <div className="login--container uwc--background">

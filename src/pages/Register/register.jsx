@@ -7,13 +7,17 @@ const Register = ({ setShowModal, isSignUp }) => {
     const [confirmPassword, setConfirmPassword] = useState(null)
     const [error, setError] = useState(null)
     const handleSubmit = () => {
-        // setShowModal(false)
         console.log("3");
     }
 
     const handleClick = () => {
         setShowModal(false)
     }
+
+    const handleCheck = (e) => {
+        // setIsChecked(e.target.checked);
+        setError(null);
+    };
 
     return (
         <div className="register--container uwc--background">
@@ -22,8 +26,7 @@ const Register = ({ setShowModal, isSignUp }) => {
                 <img src={require("../../assets/UWC-logo.png")} className="uwc--logo-img"></img>
             </div>
             <div className="register--selection">
-
-                <form onSubmit={handleSubmit}>
+                <form className="register--form" onSubmit={handleSubmit}>
                     <input
                         type="email"
                         id="email"
@@ -50,9 +53,15 @@ const Register = ({ setShowModal, isSignUp }) => {
                         required={true}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                     />
-                        <p className="register--policy">By clicking Register, you agree to our terms. <br></br> Learn how we process your data in our Privacy Policy and Cookie Policy.</p>
-                    <input className='register--button' type='submit' value='Register' />
+
+                    <div className="open--paragraph">
+                        <p>By clicking Log In, you agree to our terms.<br></br> Learn how we process your data in our Privacy Policy and Cookie Policy.</p>
+                    </div>
+
+                    <input className='role--button' type='submit'/>
                     <p>{error}</p>
+
+
 
                 </form>
             </div>
