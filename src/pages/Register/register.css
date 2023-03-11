@@ -8,7 +8,7 @@
     border-radius: 15px;
     padding: 20px;
     align-items: center;
-    
+    width: 45%;
 }
 
 .register--container .uwc--background {
@@ -35,7 +35,7 @@
     border: none;
     background-color: rgb(203, 252, 203);
     color: black;
-    width: 65%;
+    width: 120%;
 }
 
 .register--selection input[type=password]:focus,
@@ -50,7 +50,7 @@
     color: #FFFFFF;
 }
 
-.role--button {
+.register--button {
     color: #FFFFFF;
     background-color: #4CAF50;
     font-size: 15px;
@@ -61,10 +61,10 @@
     margin: 6px;
     cursor: pointer;
     transition: all 0.3s ease;
-    width: 30%;
+    width: 70%;
 }
 
-.role--button:hover {
+.register--button:hover {
     background-color: #FFFFFF;
     color: #4CAF50;
     border: 2px solid #4CAF50;

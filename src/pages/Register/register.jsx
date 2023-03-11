@@ -1,19 +1,31 @@
 import { Button } from "bootstrap";
 import React, { useState } from "react";
 import "./register.css"
-const Register = ({setShowModal, isSignUp}) => {
+const Register = ({ setShowModal, isSignUp }) => {
     const [email, setEmail] = useState(null)
     const [password, setPassword] = useState(null)
     const [confirmPassword, setConfirmPassword] = useState(null)
     const [error, setError] = useState(null)
-    const handleSubmit = () => {
-        // setShowModal(false)
-        console.log("3");
-    }
+    const [isChecked, setIsChecked] = useState(false);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        if (!isChecked) {
+            setError("Please complete the CAPTCHA.");
+            return;
+        }
+
+        console.log("Submitting the form data...");
+    };
 
     const handleClick = () => {
         setShowModal(false)
     }
+
+    const handleCheck = (e) => {
+        setIsChecked(e.target.checked);
+        setError(null);
+    };
 
     return (
         <div className="register--container uwc--background">
@@ -28,7 +40,7 @@ const Register = ({setShowModal, isSignUp}) => {
                         type="email"
                         id="email"
                         name="email"
-                        placeholder='email'
+                        placeholder='Email'
                         required={true}
                         onChange={(e) => setEmail(e.target.value)}
                     />
@@ -37,7 +49,7 @@ const Register = ({setShowModal, isSignUp}) => {
                         type="password"
                         id="password"
                         name="password"
-                        placeholder='password'
+                        placeholder='Password'
                         required={true}
                         onChange={(e) => setPassword(e.target.value)}
                     />
@@ -46,16 +58,18 @@ const Register = ({setShowModal, isSignUp}) => {
                         type="password"
                         id="password-check"
                         name="password-check"
-                        placeholder='confirm password'
+                        placeholder='Confirm password'
                         required={true}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                     />
 
-                    <input className='role--button' type='submit' value='Register'/>
-                    <div className="open--paragraph">
-                        <p>By clicking Log In, you agree to our terms. <br></br> Learn how we process your data in our Privacy Policy and Cookie Policy.</p>
-                    </div>
+                    <input className='register--button' type='submit' value='Register' />
+                    {/* <div className="open--paragraph">
+                        <p>By clicking Register, you agree to our terms. <br></br> Learn how we process your data in our Privacy Policy and Cookie Policy.</p>
+                    </div> */}
                     <p>{error}</p>
+
+
 
                 </form>
             </div>

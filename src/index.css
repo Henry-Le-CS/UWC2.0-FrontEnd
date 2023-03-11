@@ -42,8 +42,9 @@ code {
   justify-content: flex-start;
   flex-direction: column;
   min-width: 500px;
-  overflow-y: scroll;
+  background-attachment: fixed;
 }
+
 
 
 .uwc--title {
