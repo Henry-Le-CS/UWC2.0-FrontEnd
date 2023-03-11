@@ -3,44 +3,67 @@
 }
 
 .login--account{
-    margin-top: 40px;
+    margin: 40px auto;
     display: flex;
     flex-direction: column;
-    background-color: rgba(23, 1, 23, 0.5); 
-    border-radius: 15px;
-    padding: 20px;
+    justify-content: center;
+    background-color: #f5f5f5; 
+    border-radius: 20px;
+    padding: 40px;
     align-items: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
 }
+
 .login--input{
-    background-color: #B1FDB0;
-    margin-top: 20px;
+    background-color: #ffffff;
     margin-bottom: 15px;
-    font-size: 30px;
-    width: 300px;
-    border-radius: 10px;
+    font-size: 17px;
+    width: 100%;
+    padding: 16px;
+    border-radius: 30px;
     height: 60px;
-    
+    border: none;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .login--input::placeholder{
     color: #A69191;
 }
 
-.login--button{
-    width: 175px;
-    height: 35px;
-    margin-top: 20px;
-    border-radius: 10px;
-    font-size: 25px;
-    text-align: center;
-    align-items: center;
-    border: 0px;
-    cursor: pointer;
+.login--input:focus{
+    outline: none;
+    background-color: #f0f0f0;
 }
 
-.login--button:hover{
-    opacity: 0.8;
+.login--input:focus::placeholder{
+    color: #B1B1B1;
 }
+
+.login--button{
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .login--button:hover {
+    background-color: #3E8E41;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+  }
+  
+  .login--button:focus {
+    outline: none;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+  }
+  
 .login--User{
     margin-top: 20px;
 }
@@ -50,4 +73,23 @@
 }
 .login--correct{
     color: #18EF21;
+}
+
+.login--heading{
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333333;
+}
+
+.login--label{
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333333;
+}
+
+.login--form{
+    width: 100%;
+    max-width: 400px;
 }

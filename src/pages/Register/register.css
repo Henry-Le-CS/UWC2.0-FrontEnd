@@ -1,14 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300&display=swap');
 
 .register--selection {
-    margin-top: 40px;
+    margin-top: 50px;
     display: flex;
     flex-direction: column;
-    background-color: rgba(23, 1, 23, 0.5); 
-    border-radius: 15px;
-    padding: 20px;
+    background-color: #F2F2F2; 
+    border-radius: 20px;
+    padding: 40px;
     align-items: center;
-    width: 45%;
+    width: 30%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .register--container .uwc--background {
@@ -19,49 +20,57 @@
     max-height: 100vh;
     overflow: auto;
 }
-  
+
+.register--selection h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 0 0 20px;
+    color: #333333;
+}
+
 .register--selection form {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
 .register--selection input[type=password],
 .register--selection input[type=email] {
     padding: 15px;
-    margin: 8px;
+    margin: 10px 0;
     font-size: 17px;
-    border-radius: 25px;
+    border-radius: 30px;
     border: none;
-    background-color: rgb(203, 252, 203);
-    color: black;
-    width: 120%;
+    background-color: #FFFFFF;
+    color: #333333;
+    width: 100%;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .register--selection input[type=password]:focus,
 .register--selection input[type=email]:focus {
     outline: none;
-    background-color: #196346;
-    color: white;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .register--selection input[type=password]:focus::placeholder,
 .register--selection input[type=email]:focus::placeholder {
-    color: #FFFFFF;
+    color: #B1B1B1;
 }
 
 .register--button {
     color: #FFFFFF;
     background-color: #4CAF50;
-    font-size: 15px;
+    font-size: 16px;
     text-transform: uppercase;
-    padding: 12px 30px;
+    padding: 14px 40px;
     border-radius: 30px;
     border: none;
-    margin: 6px;
+    margin: 20px 0;
     cursor: pointer;
     transition: all 0.3s ease;
-    width: 70%;
+    width: 100%;
 }
 
 .register--button:hover {
@@ -70,12 +79,24 @@
     border: 2px solid #4CAF50;
 }
 
+.register--paragraph {
+    font-size: 14px;
+    margin-top: 20px;
+    color: #666666;
+    line-height: 20px;
+}
+
 body {
     margin: 0;
     padding: 0;
     text-align: center;
+    font-family: 'Readex Pro', sans-serif;
 }
 
-.open--paragraph{
-    color: white
+.make--better {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #F5F5F5;
 }
