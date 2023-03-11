@@ -35,14 +35,15 @@
     border: none;
     margin: 7px;
     cursor: pointer;
-    transition: all 0.1s ease;
+    transition: all 0.3s ease;
+    border: 2px solid #4CAF50;
     width: 60%;
 }
 
 .login--button:hover {
     background-color: #FFFFFF;
     color: #4CAF50;
-    border: 2px solid #4CAF50;
+    
 }
 
 .login--User{

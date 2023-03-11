@@ -55,10 +55,6 @@
     color: #18EF21;
 }
 
-.role--button:hover{
-    opacity: 0.8;
-}
-
 
 .role--button {
     color: #FFFFFF;
@@ -71,10 +67,11 @@
     margin: 6px;
     cursor: pointer;
     transition: all 0.3s ease;
+    border: 2px solid #4CAF50;
 }
 
 .role--button:hover {
     background-color: #FFFFFF;
     color: #4CAF50;
-    border: 2px solid #4CAF50;
+    
 }

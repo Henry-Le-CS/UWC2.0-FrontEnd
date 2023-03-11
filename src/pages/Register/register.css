@@ -54,12 +54,13 @@
     cursor: pointer;
     transition: all 0.3s ease;
     font-weight: bolder;
+    border: 2px solid #4CAF50;
 }
 
 .register--button:hover {
     background-color: #FFFFFF;
     color: #4CAF50;
-    border: 2px solid #4CAF50;
+    
 }
 
 
