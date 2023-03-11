@@ -6,24 +6,16 @@ const Register = ({ setShowModal, isSignUp }) => {
     const [password, setPassword] = useState(null)
     const [confirmPassword, setConfirmPassword] = useState(null)
     const [error, setError] = useState(null)
-    const [isChecked, setIsChecked] = useState(false);
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        if (!isChecked) {
-            setError("Please complete the CAPTCHA.");
-            return;
-        }
-
-        console.log("Submitting the form data...");
-    };
+    const handleSubmit = () => {
+        console.log("3");
+    }
 
     const handleClick = () => {
         setShowModal(false)
     }
 
     const handleCheck = (e) => {
-        setIsChecked(e.target.checked);
+        // setIsChecked(e.target.checked);
         setError(null);
     };
 
@@ -34,8 +26,7 @@ const Register = ({ setShowModal, isSignUp }) => {
                 <img src={require("../../assets/UWC-logo.png")} className="uwc--logo-img"></img>
             </div>
             <div className="register--selection">
-
-                <form onSubmit={handleSubmit}>
+                <form className="register--form" onSubmit={handleSubmit}>
                     <input
                         type="email"
                         id="email"
@@ -63,10 +54,11 @@ const Register = ({ setShowModal, isSignUp }) => {
                         onChange={(e) => setConfirmPassword(e.target.value)}
                     />
 
-                    <input className='register--button' type='submit' value='Register' />
-                    {/* <div className="open--paragraph">
-                        <p>By clicking Register, you agree to our terms. <br></br> Learn how we process your data in our Privacy Policy and Cookie Policy.</p>
-                    </div> */}
+                    <div className="open--paragraph">
+                        <p>By clicking Log In, you agree to our terms.<br></br> Learn how we process your data in our Privacy Policy and Cookie Policy.</p>
+                    </div>
+
+                    <input className='role--button' type='submit'/>
                     <p>{error}</p>
 
 

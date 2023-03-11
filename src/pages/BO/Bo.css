@@ -1,6 +1,6 @@
 .container {
   display: flex;
-  height: 100vh;
+  background-color: orange;
 }
 
 .sidebar {
@@ -9,9 +9,12 @@
   width: 200px;
   padding: 20px;
   transition: 0.3s ease-in-out;
-  transform: translateX(-100%);
+  position: absolute;
+  top: 100px;
 }
-
+.SideBarBtn{
+  width: 200px;
+}
 .sidebar ul {
   list-style: none;
   margin: 0;
@@ -32,10 +35,11 @@
 .content {
   padding: 20px;
   flex: 1;
+  display: block;
+
 }
 
 .toggleSidebarBtn {
-  position: absolute;
   top: 20px;
   left: 20px;
   padding: 8px 16px;
@@ -45,10 +49,14 @@
   border: none;
   cursor: pointer;
   z-index: 1;
+  height: 100%;
+  position: relative;
   transition: 0.3s ease-in-out;
+  height: 80px;
 }
 
 .toggleSidebarBtn:hover {
   background-color: #fff;
   color: #333;
 }
+
