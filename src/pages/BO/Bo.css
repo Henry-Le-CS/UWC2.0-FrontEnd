@@ -1,3 +1,54 @@
-h1{
-    color: red;
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  background-color: #000000;
+  color: #ffffff;
+  width: 200px;
+  padding: 20px;
+  transition: 0.3s ease-in-out;
+  transform: translateX(-100%);
+}
+
+.sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: black;
+}
+
+.sidebar li {
+  margin: 10px 0;
+  color: black;
+}
+
+.sidebar a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.content {
+  padding: 20px;
+  flex: 1;
+}
+
+.toggleSidebarBtn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  z-index: 1;
+  transition: 0.3s ease-in-out;
+}
+
+.toggleSidebarBtn:hover {
+  background-color: #fff;
+  color: #333;
 }
