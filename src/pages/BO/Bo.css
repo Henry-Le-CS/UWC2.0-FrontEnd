@@ -1,15 +1,14 @@
 .BO--sidebar {
-  margin-top: 0;
-  background-color: #222;
-  color: #fff;
-  width: 240px;
-  padding: 20px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  transition: transform 0.3s ease-in-out;
-  font-family: Arial, sans-serif;
+    margin-top: 00px;
+    background-color: #333;
+    color: #fff;
+    width: 200px;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    transition: transform 0.3s ease-in-out;
 }
 
 .BO--sidebar ul {

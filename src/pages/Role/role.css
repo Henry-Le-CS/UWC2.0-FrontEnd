@@ -28,6 +28,8 @@
     background-color: rgb(183, 221, 243);
     text-decoration: none;
     color: black;
+    padding: 10px;
+    margin: 15px;
 }
 
 .role--bofficer{
@@ -39,7 +41,7 @@
 }
 
 .role--register, .role--register .role--register-button{
-    margin-top: 50px;    
+    margin-top: 20px;    
     font-weight: bolder;
     color: white;
 }
@@ -53,8 +55,23 @@
     color: #18EF21;
 }
 
-.role--button:hover{
-    opacity: 0.8;
+
+.role--button {
+    color: #FFFFFF;
+    background-color: #4CAF50;
+    font-size: 15px;
+    text-transform: uppercase;
+    padding: 12px 30px;
+    border-radius: 30px;
+    border: none;
+    margin: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid #4CAF50;
+}
+
+.role--container{
+    text-align: center;
 }
 
 

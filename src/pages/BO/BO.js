@@ -25,7 +25,7 @@ export default function BO() {
                             </div>
                         </li>
                         <li>
-                            <div className="assign-vehicles">
+                            <div class="assign-vehicles">
                                 <a href="#">
                                     <img src={require("../../assets/icon-sidebar/material-symbols_fire-truck.png")} alt="Add vehicle" />
                                 </a>
@@ -33,7 +33,7 @@ export default function BO() {
                             </div>
                         </li>
                         <li>
-                            <div className="assign-worker">
+                            <div class="assign-worker">
                                 <a href="#">
                                     <img src={require("../../assets/icon-sidebar/mdi_worker.png")} alt="Add worker" />
                                 </a>
@@ -41,19 +41,11 @@ export default function BO() {
                             </div>
                         </li>
                         <li>
-                            <div className="assign-MCP">
+                            <div class="assign-MCP">
                                 <a href="#">
                                     <img src={require("../../assets/icon-sidebar/basil_hotspot-solid.png")} alt="Add MCP" />
                                 </a>
                                 <a>View MCPs</a>
-                            </div>
-                        </li>
-                        <li>
-                            <div className="settings">
-                                <a href="#">
-                                    <img src={require("../../assets/icon-sidebar/ant-design_setting-outlined.png")} alt="Add MCP" />
-                                </a>
-                                <a>settings</a>
                             </div>
                         </li>
                     </ul>

@@ -19,6 +19,7 @@
 .register--container {
     max-height: 100vh;
     overflow: auto;
+    text-align: center;
 }
 
 .register--selection h1 {
@@ -76,7 +77,7 @@
 .register--button:hover {
     background-color: #FFFFFF;
     color: #4CAF50;
-    border: 2px solid #4CAF50;
+    
 }
 
 .register--paragraph {
@@ -89,7 +90,6 @@
 body {
     margin: 0;
     padding: 0;
-    text-align: center;
     font-family: 'Readex Pro', sans-serif;
 }
 
@@ -100,3 +100,8 @@ body {
     min-height: 100vh;
     background-color: #F5F5F5;
 }
+
+.register--form{
+    width: 340px;
+}
+
