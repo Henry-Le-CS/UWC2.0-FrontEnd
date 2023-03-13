@@ -36,6 +36,7 @@
 }
 
 .BO--content {
+  text-align: center;
   padding: 20px;
   flex: 1;
 }
