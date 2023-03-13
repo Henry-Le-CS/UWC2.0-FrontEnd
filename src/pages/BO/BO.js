@@ -14,25 +14,50 @@ export default function BO() {
                 {showSidebar ? "Hide" : "Show"} Sidebar
             </button>
             {showSidebar && (
-                <nav class="BO--sidebar">
+                <nav className="BO--sidebar">
                     <ul>
                         <li>
-                            <div class="assign-task">
+                            <div className="assign-task">
                                 <a href="#">
                                     <img src={require("../../assets/icon-sidebar/material-symbols_add-task.png")} alt="Add task" />
                                 </a>
-                                <a>Home</a>
+                                <a>Assign task</a>
                             </div>
                         </li>
                         <li>
-                            <a>About</a>
+                            <div className="assign-vehicles">
+                                <a href="#">
+                                    <img src={require("../../assets/icon-sidebar/material-symbols_fire-truck.png")} alt="Add vehicle" />
+                                </a>
+                                <a>Assign vehicles</a>
+                            </div>
                         </li>
                         <li>
-                            <a>Contact</a>
+                            <div className="assign-worker">
+                                <a href="#">
+                                    <img src={require("../../assets/icon-sidebar/mdi_worker.png")} alt="Add worker" />
+                                </a>
+                                <a>Assign workers</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div className="assign-MCP">
+                                <a href="#">
+                                    <img src={require("../../assets/icon-sidebar/basil_hotspot-solid.png")} alt="Add MCP" />
+                                </a>
+                                <a>View MCPs</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div className="settings">
+                                <a href="#">
+                                    <img src={require("../../assets/icon-sidebar/ant-design_setting-outlined.png")} alt="Add MCP" />
+                                </a>
+                                <a>settings</a>
+                            </div>
                         </li>
                     </ul>
                 </nav>
-
             )}
 
             <main className="BO--content">

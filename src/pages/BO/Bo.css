@@ -1,66 +1,74 @@
-.BO--container {
-  display: flex;
-  height: 100vh;
-}
-
 .BO--sidebar {
-    margin-top: 00px;
-    background-color: #333;
-    color: #fff;
-    width: 200px;
-    padding: 20px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    transition: transform 0.3s ease-in-out;
+  margin-top: 0;
+  background-color: #222;
+  color: #fff;
+  width: 240px;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  transition: transform 0.3s ease-in-out;
+  font-family: Arial, sans-serif;
 }
 
 .BO--sidebar ul {
-  
+  text-align: left;
   list-style: none;
   margin-top: 40px;
   padding: 0;
-  color: black;
 }
 
 .BO--sidebar li {
   margin: 10px 0;
-  color: black;
 }
 
 .BO--sidebar a {
-  
+  display: block;
+  padding: 10px 20px;
   color: #fff;
   text-decoration: none;
+  transition: background-color 0.3s ease-in-out;
 }
 
-.BO--content {
-  padding: 20px;
-  flex: 1;
-}
-
-.toggle-button{
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  padding: 8px 16px;
-  font-size: 16px;
+.BO--sidebar a:hover {
   background-color: #333;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  z-index: 1;
-  transition: 0.3s ease-in-out;
-}
-
-.toggle-button:hover {
-  background-color: #fff;
-  color: #333;
 }
 
 .BO--sidebar img {
   width: 50px;
-  height: 50px;
-  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.BO--sidebar .settings {
+  position: relative;
+}
+
+.BO--sidebar h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.BO--sidebar p {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.BO--sidebar .btn {
+  display: block;
+  background-color: #fff;
+  color: #333;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.BO--sidebar .btn:hover {
+  background-color: #eee;
 }
