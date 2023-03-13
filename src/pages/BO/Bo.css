@@ -1,6 +1,6 @@
 .BO--container {
   display: flex;
-  height: 100vh;
+  background-color: orange;
 }
 
 .BO--sidebar {
@@ -17,7 +17,6 @@
 }
 
 .BO--sidebar ul {
-  
   list-style: none;
   margin-top: 40px;
   padding: 0;
@@ -38,6 +37,8 @@
 .BO--content {
   padding: 20px;
   flex: 1;
+  display: block;
+
 }
 
 .toggle-button{
@@ -51,14 +52,16 @@
   border: none;
   cursor: pointer;
   z-index: 1;
+  height: 100%;
+  position: relative;
   transition: 0.3s ease-in-out;
+  height: 80px;
 }
 
 .toggle-button:hover {
   background-color: #fff;
   color: #333;
 }
-
 .BO--sidebar img {
   width: 50px;
   height: 50px;
