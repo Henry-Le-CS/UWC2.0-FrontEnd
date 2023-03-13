@@ -43,8 +43,7 @@ export default function BO() {
             </main>
         </div>
     );
-
-
+}
 
 // function BO() {
 //   const { isLoaded } = useJsApiLoader({
@@ -87,5 +86,3 @@ export default function BO() {
 //   ) : <></>
 // >>>>>>> main
 // }
-
-export default BO
