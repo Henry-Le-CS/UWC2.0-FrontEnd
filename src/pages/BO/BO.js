@@ -9,16 +9,20 @@ export default function BO() {
     };
 
     return (
-        <div className="container" id="bo-container">
-            <button className="toggleSidebarBtn" onClick={toggleSidebar}>
+        <div className="BO--container">
+            <button className="toggle-button" onClick={toggleSidebar}>
                 {showSidebar ? "Hide" : "Show"} Sidebar
             </button>
-            {console.log("BO", showSidebar)}
             {showSidebar && (
-                <nav className="sidebar">
+                <nav class="BO--sidebar">
                     <ul>
                         <li>
-                            <a>Home</a>
+                            <div class="assign-task">
+                                <a href="#">
+                                    <img src={require("../../assets/icon-sidebar/material-symbols_add-task.png")} alt="Add task" />
+                                </a>
+                                <a>Home</a>
+                            </div>
                         </li>
                         <li>
                             <a>About</a>
@@ -28,9 +32,10 @@ export default function BO() {
                         </li>
                     </ul>
                 </nav>
+
             )}
 
-            <main className="content">
+            <main className="BO--content">
                 <h1>BO site</h1>
                 <p>hi</p>
             </main>

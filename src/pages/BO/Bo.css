@@ -1,40 +1,46 @@
-.container {
+.BO--container {
   display: flex;
   height: 100vh;
 }
 
-.sidebar {
-  background-color: #000000;
-  color: #ffffff;
-  width: 200px;
-  padding: 20px;
-  transition: 0.3s ease-in-out;
-  transform: translateX(-100%);
+.BO--sidebar {
+    margin-top: 00px;
+    background-color: #333;
+    color: #fff;
+    width: 200px;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    transition: transform 0.3s ease-in-out;
 }
 
-.sidebar ul {
+.BO--sidebar ul {
+  
   list-style: none;
-  margin: 0;
+  margin-top: 40px;
   padding: 0;
   color: black;
 }
 
-.sidebar li {
+.BO--sidebar li {
   margin: 10px 0;
   color: black;
 }
 
-.sidebar a {
+.BO--sidebar a {
+  
   color: #fff;
   text-decoration: none;
 }
 
-.content {
+.BO--content {
   padding: 20px;
   flex: 1;
 }
 
-.toggleSidebarBtn {
+.toggle-button{
   position: absolute;
   top: 20px;
   left: 20px;
@@ -48,7 +54,13 @@
   transition: 0.3s ease-in-out;
 }
 
-.toggleSidebarBtn:hover {
+.toggle-button:hover {
   background-color: #fff;
   color: #333;
+}
+
+.BO--sidebar img {
+  width: 50px;
+  height: 50px;
+  vertical-align: middle;
 }
