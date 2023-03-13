@@ -1,7 +1,5 @@
-
 import React, { useState } from "react";
 import "./BO.css";
-import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 
 export default function BO() {
     const [showSidebar, setShowSidebar] = useState(false);
@@ -23,18 +21,35 @@ export default function BO() {
                                 <a href="#">
                                     <img src={require("../../assets/icon-sidebar/material-symbols_add-task.png")} alt="Add task" />
                                 </a>
-                                <a>Home</a>
+                                <a>Assign task</a>
                             </div>
                         </li>
                         <li>
-                            <a>About</a>
+                            <div class="assign-vehicles">
+                                <a href="#">
+                                    <img src={require("../../assets/icon-sidebar/material-symbols_fire-truck.png")} alt="Add vehicle" />
+                                </a>
+                                <a>Assign vehicles</a>
+                            </div>
                         </li>
                         <li>
-                            <a>Contact</a>
+                            <div class="assign-worker">
+                                <a href="#">
+                                    <img src={require("../../assets/icon-sidebar/mdi_worker.png")} alt="Add worker" />
+                                </a>
+                                <a>Assign workers</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="assign-MCP">
+                                <a href="#">
+                                    <img src={require("../../assets/icon-sidebar/basil_hotspot-solid.png")} alt="Add MCP" />
+                                </a>
+                                <a>View MCPs</a>
+                            </div>
                         </li>
                     </ul>
                 </nav>
-
             )}
 
             <main className="BO--content">
