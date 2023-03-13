@@ -1,44 +1,59 @@
-import React, { useState } from "react";
-import "./Bo.css";
 
-export default function BO() {
-    const [showSidebar, setShowSidebar] = useState(false);
+import React from 'react'
+import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+import "./Bo.css"
 
-    const toggleSidebar = () => {
-        setShowSidebar(!showSidebar);
-    };
+const containerStyle = {
+  width: '100%',
+  height: '100vh'
+};
 
-    return (
-        <div className="container" id="bo-container">
-            <div className="SideBarBtn">
-                <button className="toggleSidebarBtn" onClick={toggleSidebar}>
-                    {showSidebar ? "Hide" : "Show"} Sidebar
-                </button>
-            </div>
-                {showSidebar && (
-                    <nav className="sidebar">
-                        <ul>
-                            <li>
-                                <a>Home</a>
-                            </li>
-                            <li>
-                                <a>About</a>
-                            </li>
-                            <li>
-                                <a>Contact</a>
-                            </li>
-                        </ul>
-                    </nav>
-                )}
-            {console.log("BO", showSidebar)}
+const center = {
+  lat: 10.772792707928192,
+  lng: 106.6577516415506
+};
 
-            <main className="content">
-                <div>
+//10.772792707928192, 106.6577516415506
 
-                <h1>BO site</h1>
-                <p>hi</p>
-                </div>
-            </main>
-        </div>
-    );
+function BO() {
+  const { isLoaded } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: "AIzaSyAn7zRwQZC0MNs2kQIf8ATBBSW2ZzLXCtw"
+  })
+
+  const [map, setMap] = React.useState(null)
+
+  const onLoad = React.useCallback(function callback(map) {
+    // This is just an example of getting and using the map instance!!! don't just blindly copy!
+    const bounds = new window.google.maps.LatLngBounds(center);
+    map.fitBounds(bounds);
+
+    setMap(map)
+  }, [])
+
+  const onUnmount = React.useCallback(function callback(map) {
+    setMap(null)
+  }, [])
+
+  return isLoaded ? (
+    <div>
+      <h1>BO Site</h1>
+      <div className="map">
+        <GoogleMap
+          mapContainerStyle={containerStyle}
+          center={center}
+          zoom={16}
+          onLoad={onLoad}
+          onUnmount={onUnmount}
+        >
+          <Marker
+            position={center}
+          />
+          <></>
+        </GoogleMap>
+      </div>
+    </div>
+  ) : <></>
 }
+
+export default BO
