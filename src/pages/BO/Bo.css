@@ -28,7 +28,7 @@
 }
 
 .BO--sidebar li {
-  margin: 10px 0;
+  margin: 10px 12px;
   color: black;
 }
 
@@ -71,9 +71,27 @@
   vertical-align: middle;
 }
 
-
 .map{
   position: relative;
   z-index: 0;
   /* display: none; */
+}
+
+.BO--sidebar .settings{
+  top: 290px;
+  position: relative;
+}
+
+.BO--sidebar .assign-task{
+  display: block;
+  background-color: #9b9999;
+  color: #333;
+  border: none;
+  padding: 5px 5px;
+  border-radius: 30px; /* adds rounded corners */
+  font-size: 12px;
+  text-align: left;
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out;
+  cursor: pointer;
 }

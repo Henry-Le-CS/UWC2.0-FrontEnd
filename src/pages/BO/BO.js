@@ -41,8 +41,9 @@ export default function BO() {
               <div className="assign-task">
                 <a href="#">
                   <img src={require("../../assets/icon-sidebar/material-symbols_add-task.png")} alt="Add task" />
+                  <a>Assign task</a>
                 </a>
-                <a>Assign task</a>
+                
               </div>
             </li>
             <li>
@@ -67,6 +68,14 @@ export default function BO() {
                   <img src={require("../../assets/icon-sidebar/basil_hotspot-solid.png")} alt="Add MCP" />
                 </a>
                 <a>View MCPs</a>
+              </div>
+            </li>
+            <li>
+              <div className="settings">
+                <a href="#">
+                  <img src={require("../../assets/icon-sidebar/ant-design_setting-outlined.png")} alt="Add MCP" />
+                </a>
+                <a>Settings</a>
               </div>
             </li>
           </ul>
