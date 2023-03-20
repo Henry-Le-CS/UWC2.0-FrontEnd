@@ -6,17 +6,17 @@
 }
 
 .BO--sidebar {
-    margin-top: 0;
-    background-color: #333;
-    color: #fff;
-    width: 210px;
-    padding: 20px;
-    position: fixed;
-    z-index: 2;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    transition: transform 0.3s ease-in-out;
+  margin-top: 0;
+  background-color: #333;
+  color: #fff;
+  width: 210px;
+  padding: 20px;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  transition: transform 0.3s ease-in-out;
 }
 
 .BO--sidebar ul {
@@ -44,7 +44,7 @@
   flex: 1;
 }
 
-.toggle-button{
+.toggle-button {
   position: absolute;
   /* top: 20px;
   left: 20px; */
@@ -71,24 +71,25 @@
   vertical-align: middle;
 }
 
-.map{
+.map {
   position: relative;
   z-index: 0;
   /* display: none; */
 }
 
-.BO--sidebar .settings{
+.BO--sidebar .settings {
   top: 290px;
   position: relative;
 }
 
-.BO--sidebar .assign-task{
+.BO--sidebar .assign-task {
   display: block;
   background-color: #9b9999;
   color: #333;
   border: none;
   padding: 5px 5px;
-  border-radius: 30px; /* adds rounded corners */
+  border-radius: 30px;
+  /* adds rounded corners */
   font-size: 12px;
   text-align: left;
   text-decoration: none;
