@@ -1,73 +1,110 @@
+/* Sidebar styling */
 .BO--sidebar {
-    margin-top: 00px;
-    background-color: #333;
-    color: #fff;
-    width: 200px;
-    padding: 20px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    transition: transform 0.3s ease-in-out;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 250px;
+  height: 100%;
+  background-color: #333;
+  transition: right 0.3s ease-in-out;
+  z-index: 2;
 }
 
+/* Sidebar menu styling */
 .BO--sidebar ul {
-  text-align: left;
   list-style: none;
-  margin-top: 40px;
+  margin: 0;
   padding: 0;
 }
 
 .BO--sidebar li {
-  margin: 10px 0;
+  margin: 20px 0;
 }
 
 .BO--sidebar a {
-  display: block;
-  padding: 10px 20px;
+  display: flex;
+  align-items: center;
   color: #fff;
   text-decoration: none;
+  padding: 10px;
+  border-radius: 5px;
   transition: background-color 0.3s ease-in-out;
 }
 
 .BO--sidebar a:hover {
-  background-color: #333;
+  background-color: #555;
 }
 
 .BO--sidebar img {
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+}
+
+/* Toggle button styling */
+.toggle-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
   width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #333;
+  color: #fff;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  z-index: 2;
+}
+
+.toggle-button:focus,
+.toggle-button:hover {
+  background-color: #555;
+}
+
+.arrow-toggle {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent #fff;
   margin-right: 10px;
 }
 
-.BO--sidebar .settings {
+
+/* Show sidebar styling */
+.show-sidebar .BO--sidebar {
+  right: 0;
+}
+
+.show-sidebar .toggle-button {
+  right: 250px;
+}
+
+@media screen and (max-width: 768px) {
+  .BO--sidebar {
+    width: 100%;
+  }
+  .show-sidebar .toggle-button {
+    right: 100%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/*---------------- Map ----------------*/
+.map {
   position: relative;
-}
-
-.BO--sidebar h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-.BO--sidebar p {
-  font-size: 14px;
-  line-height: 1.5;
-  margin-bottom: 20px;
-}
-
-.BO--sidebar .btn {
-  display: block;
-  background-color: #fff;
-  color: #333;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 20px;
-  font-size: 16px;
-  text-align: center;
-  text-decoration: none;
-  transition: background-color 0.3s ease-in-out;
-  cursor: pointer;
-}
-
-.BO--sidebar .btn:hover {
-  background-color: #eee;
+  z-index: 0;
+  /* display: none; */
 }
