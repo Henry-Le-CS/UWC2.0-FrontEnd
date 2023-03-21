@@ -1,98 +1,110 @@
-.BO--container {
-  display: flex;
-  height: 100vh;
-  position: relative;
-  margin: 0;
-}
-
+/* Sidebar styling */
 .BO--sidebar {
-  margin-top: 0;
-  background-color: #333;
-  color: #fff;
-  width: 210px;
-  padding: 20px;
   position: fixed;
-  z-index: 2;
   top: 0;
-  left: 0;
-  bottom: 0;
-  transition: transform 0.3s ease-in-out;
+  right: -100%;
+  width: 250px;
+  height: 100%;
+  background-color: #333;
+  transition: right 0.3s ease-in-out;
+  z-index: 2;
 }
 
+/* Sidebar menu styling */
 .BO--sidebar ul {
-  text-align: left;
   list-style: none;
-  margin-top: 40px;
+  margin: 0;
   padding: 0;
-  color: black;
 }
 
 .BO--sidebar li {
-  margin: 10px 12px;
-  color: black;
+  margin: 20px 0;
 }
 
 .BO--sidebar a {
+  display: flex;
+  align-items: center;
   color: #fff;
   text-decoration: none;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
 }
 
-.BO--content {
-  text-align: center;
-  /* padding-top: 20px;
-  padding-bottom: 20px  ; */
-  flex: 1;
-}
-
-.toggle-button {
-  position: absolute;
-  /* top: 20px;
-  left: 20px; */
-  height: 60px;
-  padding: 8px 16px;
-  font-size: 16px;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  z-index: 3;
-  transition: 0.3s ease-in-out;
-  width: 210px;
-}
-
-.toggle-button:hover {
-  background-color: #fff;
-  color: #333;
+.BO--sidebar a:hover {
+  background-color: #555;
 }
 
 .BO--sidebar img {
-  width: 50px;
-  height: 50px;
-  vertical-align: middle;
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
 }
 
+/* Toggle button styling */
+.toggle-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #333;
+  color: #fff;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  z-index: 2;
+}
+
+.toggle-button:focus,
+.toggle-button:hover {
+  background-color: #555;
+}
+
+.arrow-toggle {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent #fff;
+  margin-right: 10px;
+}
+
+
+/* Show sidebar styling */
+.show-sidebar .BO--sidebar {
+  right: 0;
+}
+
+.show-sidebar .toggle-button {
+  right: 250px;
+}
+
+@media screen and (max-width: 768px) {
+  .BO--sidebar {
+    width: 100%;
+  }
+  .show-sidebar .toggle-button {
+    right: 100%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/*---------------- Map ----------------*/
 .map {
   position: relative;
   z-index: 0;
   /* display: none; */
-}
-
-.BO--sidebar .settings {
-  top: 290px;
-  position: relative;
-}
-
-.BO--sidebar .assign-task {
-  display: block;
-  background-color: #9b9999;
-  color: #333;
-  border: none;
-  padding: 5px 5px;
-  border-radius: 30px;
-  /* adds rounded corners */
-  font-size: 12px;
-  text-align: left;
-  text-decoration: none;
-  transition: background-color 0.3s ease-in-out;
-  cursor: pointer;
 }

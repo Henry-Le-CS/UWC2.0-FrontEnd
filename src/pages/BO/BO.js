@@ -11,12 +11,8 @@ const center = {
   lng: 106.6577516415506
 };
 
-export default function BO() {
+export default function Sidebar() {
   const [showSidebar, setShowSidebar] = useState(false);
-
-  const toggleSidebar = () => {
-    setShowSidebar(!showSidebar);
-  };
 
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
@@ -30,74 +26,63 @@ export default function BO() {
   }, [])
 
   return (
-    <div className="BO--container">
-      <button className="toggle-button" onClick={toggleSidebar}>
-        {showSidebar ? "Hide" : "Show"} Sidebar
-      </button>
-      {showSidebar && (
-        <nav className="BO--sidebar">
-          <ul>
-            <li>
-              <div className="assign-task">
-                <a href="#">
-                  <img src={require("../../assets/icon-sidebar/material-symbols_add-task.png")} alt="Add task" />
-                  <a>Assign task</a>
-                </a>
-                
-              </div>
-            </li>
-            <li>
-              <div className="assign-vehicles">
-                <a href="#">
-                  <img src={require("../../assets/icon-sidebar/material-symbols_fire-truck.png")} alt="Add vehicle" />
-                </a>
-                <a>Assign vehicles</a>
-              </div>
-            </li>
-            <li>
-              <div className="assign-worker">
-                <a href="#">
-                  <img src={require("../../assets/icon-sidebar/mdi_worker.png")} alt="Add worker" />
-                </a>
-                <a>Assign workers</a>
-              </div>
-            </li>
-            <li>
-              <div className="assign-MCP">
-                <a href="#">
-                  <img src={require("../../assets/icon-sidebar/basil_hotspot-solid.png")} alt="Add MCP" />
-                </a>
-                <a>View MCPs</a>
-              </div>
-            </li>
-            <li>
-              <div className="settings">
-                <a href="#">
-                  <img src={require("../../assets/icon-sidebar/ant-design_setting-outlined.png")} alt="Add MCP" />
-                </a>
-                <a>Settings</a>
-              </div>
-            </li>
-          </ul>
-        </nav>
-      )}
+    <div className="sidebar-container">
+      <nav className="BO--sidebar">
+        <ul>
+          <li>
+            <a href="#">
+              <img src={require("../../assets/icon-sidebar/add-task.png")} alt="Add task" />
+              Assign task
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src={require("../../assets/icon-sidebar/vehicle.png")} alt="Add vehicle" />
+              Assign vehicles
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src={require("../../assets/icon-sidebar/worker.png")} alt="Add worker" />
+              Assign workers
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src={require("../../assets/icon-sidebar/hotspot.png")} alt="Add MCP" />
+              View MCPs
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src={require("../../assets/icon-sidebar/setting.png")} alt="Settings" />
+              Settings
+            </a>
+          </li>
+        </ul>
+        <button className="toggle-button" onClick={() => setShowSidebar(!showSidebar)}>
+          <span className="arrow-toggle"></span>
+          {showSidebar ? "Hide" : "Show"}
+        </button>
+      </nav>
+
 
       <main className="BO--content">
         {/* <h1>BO site</h1> */}
         {isLoaded &&
-        <div className="map">
-          <GoogleMap
-            mapContainerStyle={containerStyle}
-            center={center}
-            zoom={16}
-            onUnmount={onUnmount}
-          >
-            <Marker
-              position={center}
-            />
-            <></>
-          </GoogleMap>
-        </div>}
+          <div className="map">
+            <GoogleMap
+              mapContainerStyle={containerStyle}
+              center={center}
+              zoom={16}
+              onUnmount={onUnmount}
+            >
+              <Marker
+                position={center}
+              />
+              <></>
+            </GoogleMap>
+          </div>}
       </main >
     </div >
   );
