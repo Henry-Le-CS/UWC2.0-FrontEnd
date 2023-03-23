@@ -17,6 +17,7 @@
 .BO--sidebar_addition {
   background: white;
   transition: right 0.3s ease-in-out;
+  height: 100%;
 }
 
 
@@ -50,10 +51,10 @@
 .BO--features-box {
   height: 100%;
   min-width: 342px;
+  max-height: 100%;
 }
 
 .BO--featuresDisplay {
-  height: 100%;
   text-align: center;
   font-size: 50px;
   font-weight: bolder;  
@@ -84,7 +85,6 @@
   z-index: 5;
   background-color: #D8D8D8;
 }
-
 
 .BO--content {
   position: absolute;

@@ -1,12 +1,13 @@
 import { Button } from "bootstrap";
 import React, { useState } from "react";
 import "./register.css"
-const Register = ({ setShowModal, isSignUp }) => {
+const Register = ({setShowModal, isSignUp}) => {
     const [email, setEmail] = useState(null)
     const [password, setPassword] = useState(null)
     const [confirmPassword, setConfirmPassword] = useState(null)
     const [error, setError] = useState(null)
     const handleSubmit = () => {
+        // setShowModal(false)
         console.log("3");
     }
 
@@ -26,7 +27,10 @@ const Register = ({ setShowModal, isSignUp }) => {
                 <img src={require("../../assets/UWC-logo.png")} className="uwc--logo-img"></img>
             </div>
             <div className="register--selection">
-                <form className="register--form" onSubmit={handleSubmit}>
+                <div className="open--paragraph">
+                    <p>By clicking Log In, you agree to our terms. <br></br> Learn how we process your data in our Privacy Policy and Cookie Policy.</p>
+                </div>
+                <form onSubmit={handleSubmit}>
                     <input
                         type="email"
                         id="email"

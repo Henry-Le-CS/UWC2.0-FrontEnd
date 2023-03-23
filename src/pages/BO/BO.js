@@ -6,6 +6,7 @@ import { MdAddTask } from "react-icons/md";
 import { BsFillTruckFrontFill } from "react-icons/bs"
 import { FiUserPlus } from "react-icons/fi";
 import { ImLocation } from "react-icons/im"
+import TaskAssignment from "../../components/Task/taskAssignment"
 
 const containerStyle = {
   width: '100%',
@@ -15,9 +16,6 @@ const center = {
   lat: 10.772792707928192,
   lng: 106.6577516415506
 };
-const featureData  = {
-
-}
 export default function Sidebar() {
   const [showSidebar, setShowSidebar] = useState(false);
   const { isLoaded } = useJsApiLoader({
@@ -33,7 +31,7 @@ export default function Sidebar() {
   }, [])
   function handleShowBar() {
     setShowSidebar(!showSidebar);
-    if(!showSidebar){
+    if (!showSidebar) {
       setShowFeatures("Assign task");
     }
   }
@@ -48,28 +46,30 @@ export default function Sidebar() {
         </div>
         {showSidebar && <div className="BO--features-box">
           <ul className="BO--features">
-            <li onClick={()=>setShowFeatures("Assign task")}><MdAddTask /></li>
-            <li onClick={()=>setShowFeatures("Assign vehicles")}><BsFillTruckFrontFill /></li>
-            <li onClick={()=>setShowFeatures("Assign workers")}><FiUserPlus /></li>
-            <li onClick={()=>setShowFeatures("View MCPs")}><ImLocation /></li>
+            <li onClick={() => setShowFeatures("Assign task")}><MdAddTask /></li>
+            <li onClick={() => setShowFeatures("Assign vehicles")}><BsFillTruckFrontFill /></li>
+            <li onClick={() => setShowFeatures("Assign workers")}><FiUserPlus /></li>
+            <li onClick={() => setShowFeatures("View MCPs")}><ImLocation /></li>
           </ul>
-          <div className="BO--featuresDisplay">
-                {
-                  showFeatures && <div className="">{showFeatures}</div>
-                }
-          </div>
+            {
+              showFeatures == "Assign task" ? <div className="BO--task"><TaskAssignment /></div>
+                : <div className="BO--featuresDisplay">{showFeatures}</div>
+            }
         </div>}
       </nav>
 
-
       <main className="BO--content">
         {isLoaded &&
-          <div className="map" onClick={()=> showSidebar?setShowSidebar(!showSidebar):setShowSidebar(showSidebar)}>
+          <div className="map" onClick={() => showSidebar ? setShowSidebar(!showSidebar) : setShowSidebar(showSidebar)}>
             <GoogleMap
               mapContainerStyle={containerStyle}
               center={center}
               zoom={16}
               onUnmount={onUnmount}
+              onClick={(e) => {
+                console.log("latitude = ", e.latLng.lat());
+                console.log("longtitude = ", e.latLng.lng());
+              }}
             >
               <Marker
                 position={center}
