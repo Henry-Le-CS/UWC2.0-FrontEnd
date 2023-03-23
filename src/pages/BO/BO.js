@@ -6,6 +6,7 @@ import { MdAddTask } from "react-icons/md";
 import { BsFillTruckFrontFill } from "react-icons/bs"
 import { FiUserPlus } from "react-icons/fi";
 import { ImLocation } from "react-icons/im"
+import TaskAssignment from "../../components/Task/taskAssignment"
 
 const containerStyle = {
   width: '100%',
@@ -15,9 +16,6 @@ const center = {
   lat: 10.772792707928192,
   lng: 106.6577516415506
 };
-const featureData = {
-
-}
 export default function Sidebar() {
   const [showSidebar, setShowSidebar] = useState(false);
   const { isLoaded } = useJsApiLoader({
@@ -53,14 +51,12 @@ export default function Sidebar() {
             <li onClick={() => setShowFeatures("Assign workers")}><FiUserPlus /></li>
             <li onClick={() => setShowFeatures("View MCPs")}><ImLocation /></li>
           </ul>
-          <div className="BO--featuresDisplay">
             {
-              showFeatures && <div className="">{showFeatures}</div>
+              showFeatures == "Assign task" ? <div className="BO--task"><TaskAssignment /></div>
+                : <div className="BO--featuresDisplay">{showFeatures}</div>
             }
-          </div>
         </div>}
       </nav>
-
 
       <main className="BO--content">
         {isLoaded &&
