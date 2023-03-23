@@ -5,6 +5,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Available Scripts
 
 In the project directory, you can run:
+### `npm install`
+
+This command is used for install the most updated dependencies before running the following cmd.
 
 ### `npm start`
 
