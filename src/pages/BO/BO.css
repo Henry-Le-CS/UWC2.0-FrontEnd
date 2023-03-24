@@ -96,8 +96,6 @@
   z-index: 1;
 }
 .BO--task{
-  /* display: flex;
-  flex-direction: column;
-  flex:1 */
   height: calc(100% - 58px);
 }
+

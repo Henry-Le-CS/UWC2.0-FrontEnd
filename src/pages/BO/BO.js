@@ -35,9 +35,6 @@ export default function Sidebar() {
       setShowFeatures("Assign task");
     }
   }
-  function handleFeatures(event) {
-    console.log()
-  }
   return (
     <div className="BO--container">
       <nav className={showSidebar ? "BO--sidebar BO--sidebar_addition" : "BO--sidebar"}>
@@ -57,7 +54,6 @@ export default function Sidebar() {
             }
         </div>}
       </nav>
-
       <main className="BO--content">
         {isLoaded &&
           <div className="map" onClick={() => showSidebar ? setShowSidebar(!showSidebar) : setShowSidebar(showSidebar)}>

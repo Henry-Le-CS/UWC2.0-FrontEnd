@@ -5,6 +5,7 @@
     padding: 5px;
     margin-top: 15px;
     height: calc(100% - 60px);
+    overflow-y: scroll;
 }
 .TA--search--container{
     color: #555;
@@ -30,6 +31,11 @@
     color: inherit;
     border: 1px solid transparent;
     border-radius: inherit;
+    width: 100%;
+}
+
+.TA--search--input::-webkit-search-cancel-button{
+    background-color: gray;
 }
 .TA--search--input:focus{
     outline: none;

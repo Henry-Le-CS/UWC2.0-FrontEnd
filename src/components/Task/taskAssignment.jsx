@@ -52,11 +52,7 @@ const workerData = [
         userTitle: "Worker",
         userAvt: "https://scontent.fsgn2-3.fna.fbcdn.net/v/t1.6435-9/51979987_341568413128282_5470888801448493056_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=174925&_nc_ohc=GJ-ctKSPyCgAX-tO0tS&_nc_ht=scontent.fsgn2-3.fna&oh=00_AfCC5dCfYD3VCxC0Eb67ro5cJMFhp2JF8kilJWyCdKZIYA&oe=6443EF2C"
     },
-    {
-        userName: "Van Tung",
-        userTitle: "Worker",
-        userAvt: "https://scontent.fsgn2-3.fna.fbcdn.net/v/t1.6435-9/51979987_341568413128282_5470888801448493056_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=174925&_nc_ohc=GJ-ctKSPyCgAX-tO0tS&_nc_ht=scontent.fsgn2-3.fna&oh=00_AfCC5dCfYD3VCxC0Eb67ro5cJMFhp2JF8kilJWyCdKZIYA&oe=6443EF2C"
-    },
+
     {
         userName: "Trong Hieu",
         userTitle: "Worker",
@@ -92,7 +88,7 @@ function taskAssignment() {
             </form>
             <div className="TA--worker">
                 {
-                    workerData.map(worker => {
+                    workerData.map((worker) => {
                         return (
                             <div className="TA--worker--display">
                                 <div className="TA--worker--info">
