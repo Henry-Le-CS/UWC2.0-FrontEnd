@@ -52,7 +52,7 @@ export default function Sidebar() {
             <li onClick={() => setShowFeatures("View MCPs")}><ImLocation /></li>
           </ul>
             {
-              showFeatures == "Assign task" ? <div className="BO--task"><TaskAssignment /></div>
+              showFeatures == "Assign task" ? <div className="BO--task" ><TaskAssignment /></div>
                 : <div className="BO--featuresDisplay">{showFeatures}</div>
             }
         </div>}
