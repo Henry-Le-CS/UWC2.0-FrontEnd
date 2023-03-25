@@ -7,6 +7,7 @@ import { BsFillTruckFrontFill } from "react-icons/bs"
 import { FiUserPlus } from "react-icons/fi";
 import { ImLocation } from "react-icons/im"
 import TaskAssignment from "../../components/Task/taskAssignment"
+import Profile from "../../components/Profile/Profile";
 
 const containerStyle = {
   width: '100%',
@@ -16,6 +17,10 @@ const center = {
   lat: 10.772792707928192,
   lng: 106.6577516415506
 };
+const mapOptions = {
+  fullscreenControl: false
+};
+
 export default function Sidebar() {
   const [showSidebar, setShowSidebar] = useState(false);
   const { isLoaded } = useJsApiLoader({
@@ -23,9 +28,9 @@ export default function Sidebar() {
     googleMapsApiKey: "AIzaSyAn7zRwQZC0MNs2kQIf8ATBBSW2ZzLXCtw"
   })
   const [showFeatures, setShowFeatures] = useState("Assign task");
-
   const [map, setMap] = React.useState(null)
-
+  const [showProfile,setShowProfile] = useState(false);
+  // const [isAssign, setIsAssign] = React.useState(false);
   const onUnmount = React.useCallback(function callback(map) {
     setMap(null)
   }, [])
@@ -35,6 +40,11 @@ export default function Sidebar() {
       setShowFeatures("Assign task");
     }
   }
+  function handleShowProfile(){
+    setShowProfile(!showProfile);
+  }
+
+
   return (
     <div className="BO--container">
       <nav className={showSidebar ? "BO--sidebar BO--sidebar_addition" : "BO--sidebar"}>
@@ -66,6 +76,7 @@ export default function Sidebar() {
                 console.log("latitude = ", e.latLng.lat());
                 console.log("longtitude = ", e.latLng.lng());
               }}
+              options={mapOptions}
             >
               <Marker
                 position={center}
@@ -74,6 +85,7 @@ export default function Sidebar() {
             </GoogleMap>
           </div>}
       </main >
+      <Profile showProfile={showProfile} handleProfile={handleShowProfile}></Profile>
     </div >
   );
 }

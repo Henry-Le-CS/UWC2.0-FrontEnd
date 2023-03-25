@@ -79,7 +79,7 @@ const workerData = [
         userAvt: "https://scontent.fsgn2-3.fna.fbcdn.net/v/t1.6435-9/51979987_341568413128282_5470888801448493056_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=174925&_nc_ohc=GJ-ctKSPyCgAX-tO0tS&_nc_ht=scontent.fsgn2-3.fna&oh=00_AfCC5dCfYD3VCxC0Eb67ro5cJMFhp2JF8kilJWyCdKZIYA&oe=6443EF2C"
     },
 ]
-function taskAssignment() {
+function TaskAssignment() {
     return (
         <div className="TA--container">
             <form className="TA--search--container">
@@ -88,9 +88,9 @@ function taskAssignment() {
             </form>
             <div className="TA--worker">
                 {
-                    workerData.map((worker) => {
+                    workerData.map((worker,index) => {
                         return (
-                            <div className="TA--worker--display">
+                            <div className="TA--worker--display" key={index}>
                                 <div className="TA--worker--info">
                                     <h2>{worker.userName}</h2>
                                     <h5>{worker.userTitle}</h5>
@@ -107,4 +107,4 @@ function taskAssignment() {
     )
 }
 
-export default taskAssignment;
+export default TaskAssignment;
