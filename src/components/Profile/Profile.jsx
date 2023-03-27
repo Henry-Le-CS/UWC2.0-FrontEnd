@@ -5,6 +5,7 @@ import { AiFillIdcard } from "react-icons/ai"
 import { BsFillPersonVcardFill } from "react-icons/bs"
 import { BsFillChatDotsFill } from "react-icons/bs"
 import { AiFillCloseCircle } from "react-icons/ai"
+import Card from "./Card/Card";
 function Profile(props) {
     const [profileSection, setProfileSection] = React.useState("");
     function handleProfileClick(clickedProfile) {
@@ -29,10 +30,10 @@ function Profile(props) {
                         </div>
                         {
                             profileSection == "profile" ?
-                                <div>Information goes here</div>
+                                <Card></Card>
                                 :
                                 profileSection == "chat" ?
-                                <div>Chat goes here</div>:<div>Information goes here</div>
+                                <div>Chat goes here</div>:<Card/>
                                 }
                     </div>
             }

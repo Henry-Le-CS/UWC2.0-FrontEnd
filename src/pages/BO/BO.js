@@ -29,7 +29,7 @@ export default function Sidebar() {
   })
   const [showFeatures, setShowFeatures] = useState("Assign task");
   const [map, setMap] = React.useState(null)
-  const [showProfile,setShowProfile] = useState(false);
+  const [showProfile, setShowProfile] = useState(false);
   // const [isAssign, setIsAssign] = React.useState(false);
   const onUnmount = React.useCallback(function callback(map) {
     setMap(null)
@@ -40,11 +40,14 @@ export default function Sidebar() {
       setShowFeatures("Assign task");
     }
   }
-  function handleShowProfile(){
+  function handleShowProfile() {
     setShowProfile(!showProfile);
   }
 
-
+  /*
+  1. Assign MCPS for workers
+  2. Assign vehicles -> list of MCP
+  */
   return (
     <div className="BO--container">
       <nav className={showSidebar ? "BO--sidebar BO--sidebar_addition" : "BO--sidebar"}>
@@ -55,13 +58,23 @@ export default function Sidebar() {
           <ul className="BO--features">
             <li onClick={() => setShowFeatures("Assign task")}><MdAddTask /></li>
             <li onClick={() => setShowFeatures("Assign vehicles")}><BsFillTruckFrontFill /></li>
+            {/* 
+            assign vehicle -> create routes
+            priority -> how full the mcp is ? [1,2,3] priority ascending -> sort the list of tasks
+            sort descending -> if boolean == 3 -> truck, 1,2-> troller, truck
+             */}
             <li onClick={() => setShowFeatures("Assign workers")}><FiUserPlus /></li>
             <li onClick={() => setShowFeatures("View MCPs")}><ImLocation /></li>
+            {/*  
+                2 positions -> MCP:
+                Map: small windows -> summarized info: MCP id, location
+                Sidebar: MCP id, location, occupation
+            */}
           </ul>
-            {
-              showFeatures == "Assign task" ? <div className="BO--task" ><TaskAssignment /></div>
-                : <div className="BO--featuresDisplay">{showFeatures}</div>
-            }
+          {
+            showFeatures == "Assign task" ? <div className="BO--task" ><TaskAssignment /></div>
+              : <div className="BO--featuresDisplay">{showFeatures}</div>
+          }
         </div>}
       </nav>
       <main className="BO--content">
@@ -89,3 +102,6 @@ export default function Sidebar() {
     </div >
   );
 }
+
+// List of tasks and the workers taking them on
+
