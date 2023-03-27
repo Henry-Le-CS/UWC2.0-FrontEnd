@@ -25,7 +25,8 @@ export default function Sidebar() {
   const [showSidebar, setShowSidebar] = useState(false);
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: "AIzaSyAn7zRwQZC0MNs2kQIf8ATBBSW2ZzLXCtw"
+    googleMapsApiKey: "AIzaSyCTtc1rWtMOgBr86wkvAxmhUJ3THUoed8A"
+    // googleMapsApiKey: "AIzaSyDaOulQACiJzBfqumbsqg_-vKha8fCnL-s"
   })
   const [showFeatures, setShowFeatures] = useState("Assign task");
   const [map, setMap] = React.useState(null)

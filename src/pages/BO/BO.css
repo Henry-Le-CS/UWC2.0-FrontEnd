@@ -93,7 +93,11 @@
   position: absolute;
   left: 0;
   right: 0;
+  height: 100%;
   z-index: 1;
+}
+.map{
+  height: 100%;
 }
 .BO--task{
   height: calc(100% - 58px);
