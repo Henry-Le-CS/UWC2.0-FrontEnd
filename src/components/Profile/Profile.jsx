@@ -6,11 +6,20 @@ import { BsFillPersonVcardFill } from "react-icons/bs"
 import { BsFillChatDotsFill } from "react-icons/bs"
 import { AiFillCloseCircle } from "react-icons/ai"
 import Card from "./Card/Card";
+import axios from "axios";
 function Profile(props) {
     const [profileSection, setProfileSection] = React.useState("");
+    const [profileInfo,setProfile] = React.useState({})
+    React.useEffect(() => {
+      axios 
+        .post("http://localhost:8000/infoBO", { user_id: props.userID })
+        .then((res) => {
+          setProfile(res.data)
+        });
+    }, []);
+
     function handleProfileClick(clickedProfile) {
         setProfileSection(clickedProfile);
-        console.log(profileSection);
     }
     return (
         <div className="Profile--container">
@@ -30,10 +39,10 @@ function Profile(props) {
                         </div>
                         {
                             profileSection == "profile" ?
-                                <Card></Card>
+                                <Card profileInfo = {profileInfo}></Card>
                                 :
                                 profileSection == "chat" ?
-                                <div>Chat goes here</div>:<Card/>
+                                <div>Chat goes here</div>:<Card profileInfo = {profileInfo}/>
                                 }
                     </div>
             }
