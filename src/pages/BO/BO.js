@@ -36,6 +36,14 @@ export default function Sidebar() {
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyCTtc1rWtMOgBr86wkvAxmhUJ3THUoed8A",
   });
+  const [MCPs, setMCPs] = React.useState([])
+  React.useState(()=>{
+      axios.get("http://localhost:8000/viewMCP").then((res)=>{
+          setMCPs(res.data)
+      }).catch(err=>{
+          console.log(err);
+      })
+  },[])
   const onUnmount = React.useCallback(function callback(map) {
     setMap(null);
   }, []);
@@ -83,7 +91,7 @@ export default function Sidebar() {
             </ul>
             {showFeatures == "Assign task" ? (
               <div className="BO--task">
-                <TaskAssignment />
+                <TaskAssignment MCPs={MCPs}/>
               </div>
             ) : (
               <div className="BO--featuresDisplay">{showFeatures}</div>
@@ -121,7 +129,7 @@ export default function Sidebar() {
       <Profile
         showProfile={showProfile}
         handleProfile={handleShowProfile}
-        userID = {userID}
+        userID={userID}
       ></Profile>
     </div>
   );
