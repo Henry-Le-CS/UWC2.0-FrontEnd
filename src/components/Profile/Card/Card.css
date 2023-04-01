@@ -1,0 +1,51 @@
+.card--container{
+    height: calc(100% - 58px);
+    display: flex;
+}
+.card--info{
+    width: 60%;
+}
+.card--title{
+    height: 100%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid rgba(0,0,0,0.1);
+}
+.card--title img{
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    margin-top: -60px;
+}
+
+.card--job{
+    margin-top: 20px;
+    color: gray;
+    font-weight: 400;
+}
+.card--id{
+    margin-top: 10px;
+    color: gray;
+    font-weight: 400;
+}
+.card--info{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    text-indent: 10px;
+    font-size: 15px;
+}
+.card--info span{
+    font-weight: 400;
+    line-height: 60px;
+    text-transform: capitalize;
+}
+.card--info span[class=".card--email"]{
+    font-weight: 400;
+    line-height: 60px;
+    text-transform: lowercase;
+}

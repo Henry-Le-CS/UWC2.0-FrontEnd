@@ -1,0 +1,83 @@
+.Profile--container {
+    z-index: 2;
+    right: 0;
+    position: absolute;
+}
+
+.Profile--showBtn {
+    height: 36px;
+    width: 50px;
+}
+
+.Profile--showBtn button {
+    border-radius: 10px;
+    padding: 13.75px 10px;
+    border: none;
+    font-size: 30px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.Profile--showBtn button:hover{
+    opacity: 70%;
+    cursor: pointer;
+    background-color: #D8D8D8;
+}
+
+.Profile--Display{
+    width: 500px;
+    height: 400px;
+    background-color: white;
+    border: none;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.Profile--navbar{
+    height: 58px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.Profile--section{
+    display: flex;
+    align-items: center;
+    width: 50%;
+    font-size: 30px;
+}
+
+.Profile--section--component{
+    font-size: 30px;
+    border: none;
+    width: 93px;
+    height: 100%;
+    padding: 10px;
+}
+
+.Profile--section--component:hover{
+    opacity: 70%;
+    background-color: #D8D8D8;
+    cursor: pointer;
+    border-radius: 15px;
+}
+.close-btn{
+    background-color: white;
+    border:none;
+    width: 52px;
+    align-items: center;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.close-btn:hover{
+    background-color: red;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.Profile--section > button{
+
+} 
