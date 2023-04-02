@@ -3,82 +3,34 @@ import "./Assign.css";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { Checkbox } from "@mui/material";
 import axios from "axios";
-// const workerData = [
-//   {
-//     _id: "abcdef",
-//     user_id: 2153342,
-//     first_name: "Hieu",
-//     last_name: "Le Trong",
-//     is_avail: true,
-//   },
-//   {
-//     _id: "abcdef",
-//     user_id: 2152646,
-//     first_name: "Khang",
-//     last_name: "Vo Hoang Nhat",
-//     is_avail: false,
-//   },
-//   {
-//     _id: "abcdef",
-//     user_id: 2052975,
-//     first_name: "Hai",
-//     last_name: "Pham Duc",
-//     is_avail: true,
-//   },
-//   {
-//     _id: "abcdef",
-//     user_id: 2053349,
-//     first_name: "Phuong",
-//     last_name: "Le H. Mai",
-//     is_avail: false,
-//   },
-//   {
-//     _id: "abcdef",
-//     user_id: 2052782,
-//     first_name: "Tung",
-//     last_name: "Van N. Thanh",
-//     is_avail: true,
-//   },
-//   {
-//     _id: "abcdef",
-//     user_id: 2153342,
-//     first_name: "Hieu",
-//     last_name: "Le Trong",
-//     is_avail: !true,
-//   },
-//   {
-//     _id: "abcdef",
-//     user_id: 2152646,
-//     first_name: "Khang",
-//     last_name: "Vo Hoang Nhat",
-//     is_avail: !false,
-//   },
-//   {
-//     _id: "abcdef",
-//     user_id: 2052975,
-//     first_name: "Hai",
-//     last_name: "Pham Duc",
-//     is_avail: !true,
-//   },
-//   {
-//     _id: "abcdef",
-//     user_id: 2053349,
-//     first_name: "Phuong",
-//     last_name: "Le H. Mai",
-//     is_avail: !false,
-//   },
-//   {
-//     _id: "abcdef",
-//     user_id: 2052782,
-//     first_name: "Tung",
-//     last_name: "Van N. Thanh",
-//     is_avail: !true,
-//   },
-// ];
 function Assign(props) {
-
-    const workerData = props.workerData;
-
+  const workerData = props.workerData;
+  const [selectedWorker, setSelectedWorker] = React.useState([]);
+  function handleCheckBox(event) {
+    const checked = event.target.checked;
+    const workerID = event.target.value;
+    if (checked) {
+      setSelectedWorker((prevSelectedWorker) => {
+        return [...prevSelectedWorker, workerID];
+      });
+    } else {
+      setSelectedWorker((prevSelectedWorker) =>
+        prevSelectedWorker.filter((id) => id != workerID)
+      );
+    }
+  }
+  function handleSubmit(event) {
+    event.preventDefault();
+    axios
+      .post("http://localhost:8000/assignUser", {
+        mcp_id: props.selectedMCPs,
+        worker_id: selectedWorker,
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+  }
   return (
     <div className="assign--container">
       <div className="assign--header">
@@ -100,7 +52,7 @@ function Assign(props) {
             placeholder="Search MCP..."
           />
         </form>
-        <form className="assign--select--container">
+        <form className="assign--select--container" onSubmit={handleSubmit}>
           <div className="assign--select--worker">
             {workerData
               .sort((a, b) => b.is_avail - a.is_avail)
@@ -122,7 +74,13 @@ function Assign(props) {
                         )}
                       </div>
                     </div>
-                    <Checkbox />
+                    <Checkbox
+                      name={`workerID`}
+                      value={worker._id}
+                      className="TA--MCP--assign"
+                      style={{ borderRadius: "50%" }}
+                      onChange={handleCheckBox}
+                    />
                   </div>
                 );
               })}

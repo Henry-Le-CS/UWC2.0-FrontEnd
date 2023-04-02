@@ -88,14 +88,21 @@ export default function Sidebar() {
           showSidebar ? "BO--sidebar BO--sidebar_addition" : "BO--sidebar"
         }
       >
-        <div className="BO--ShowBtn">
-          <button onClick={handleShowBar}>
-            <FaBars />
-          </button>
-        </div>
+        {!showSidebar && (
+          <div className="BO--ShowBtn">
+            <button onClick={handleShowBar}>
+              <FaBars />
+            </button>
+          </div>
+        )}
         {showSidebar && (
           <div className="BO--features-box">
             <ul className="BO--features">
+              <div className="BO--ShowBtn">
+                <button onClick={handleShowBar}>
+                  <FaBars />
+                </button>
+              </div>
               <li onClick={() => setShowFeatures("Assign task")}>
                 <MdAddTask />
               </li>
@@ -124,7 +131,11 @@ export default function Sidebar() {
         )}
       </nav>
       {showAssign && (
-        <Assign showAssign={handleShowAssign} selectedMCPs={selected} workerData={workerData}/>
+        <Assign
+          showAssign={handleShowAssign}
+          selectedMCPs={selected}
+          workerData={workerData}
+        />
       )}
 
       <main className="BO--content">

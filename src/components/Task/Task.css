@@ -16,8 +16,14 @@ html::-webkit-scrollbar {
 .TA--MCP::-webkit-scrollbar {
   display: none;
 }
-.TA--MCP div{
+.TA--MCP > div{
+  width: 100%;
+    /* height: 100%; */
   overflow-y: scroll;
+  padding: 0 10px 0 10px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  flex: 1 1;
 }
 .TA--MCP div::-webkit-scrollbar {
   display: none;
@@ -77,6 +83,8 @@ html::-webkit-scrollbar {
   border: 1px solid rgba(0, 0, 0, 0.2);
   text-align: center;
   border-radius: 30px;
+  /* margin-bottom: 15px; */
+  margin-top: 15px;
   margin-bottom: 15px;
   background-color: #ffecc5;
   position: relative;
