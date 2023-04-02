@@ -11,6 +11,7 @@
   z-index: 2;
   align-items: flex-start;
   justify-content: space-between;
+  border-top-right-radius: 10px;
 }
 
 
@@ -30,6 +31,8 @@
   height: 58px;
   line-height: 18px;
   width: 372px;
+  background-color: #4CAF50;
+  border-top-right-radius: 10px;
 }
 
 .BO--features li {
@@ -38,7 +41,11 @@
   float: left;
   height: 100%;
   width: 100%;
-  line-height: 58px;
+  /* line-height: 58px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
 }
 
 .BO--features li:hover {
@@ -65,9 +72,12 @@
 .BO--ShowBtn {
   height: 36px;
   font-size: 30px;
+  height: 58px;
   align-items: center;
   justify-content: center;
-  /* margin-top: -5px;   */
+  /* margin-top: -5px; */
+  background-color: #4CAF50;
+
 
 }
 
@@ -77,8 +87,13 @@
   font-size: 30px;
   padding: 10px;
   align-items: center;
+  display: flex;
+  height: 56px;
+  justify-content: center;
   background-color: white;
   border-radius: 10px;
+  background-color: #4CAF50;
+  color: white;
 }
 
 .BO--ShowBtn button:hover {

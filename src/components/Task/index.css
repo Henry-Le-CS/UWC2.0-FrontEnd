@@ -1,16 +1,25 @@
+html::-webkit-scrollbar {
+  display: none;
+}
 .TA--container {
-  height: 100%;
+  height: calc(100% - 10px);
+  margin-top: 10px;
 }
 .TA--MCP {
   padding: 0 5px 5px 5px;
-  margin-top: 20px;
+  margin-top: 10px;
   height: calc(100% - 60px);
-  overflow-y: scroll;
   position: relative;
   display: flex;
   flex-direction: column;
 }
 .TA--MCP::-webkit-scrollbar {
+  display: none;
+}
+.TA--MCP div{
+  overflow-y: scroll;
+}
+.TA--MCP div::-webkit-scrollbar {
   display: none;
 }
 .TA--search--container {
@@ -115,13 +124,16 @@ input[type="checkbox"] {
     position: sticky;
     top: 0;
     z-index: 1;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     padding: 20px;
     border-radius: 30px;
-    background-color: #18EF21;
+    background-color: #4CAF50;
     border: 1px solid;
     text-transform: uppercase;
     width: 100%;
+    color: white;
+    font-size: 18px;
+    font-weight: bolder;
     /* margin-left: 10%; */
 }
 .TA--assignBtn:hover{

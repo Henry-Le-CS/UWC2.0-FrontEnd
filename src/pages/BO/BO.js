@@ -15,6 +15,7 @@ import { FiUserPlus } from "react-icons/fi";
 import { ImLocation } from "react-icons/im";
 import TaskAssignment from "../../components/Task/taskAssignment";
 import Profile from "../../components/Profile/Profile";
+import Assign from "../../components/Assign/Assign"
 const containerStyle = {
   width: "100%",
   height: "100vh",
@@ -30,32 +31,45 @@ const mapOptions = {
 export default function Sidebar() {
   const [showSidebar, setShowSidebar] = useState(false);
   const [showFeatures, setShowFeatures] = useState("Assign task");
+  const [currentBO, setCurrentBO] = useState({});
   const [map, setMap] = React.useState(null);
   const [showProfile, setShowProfile] = useState(false);
+  const [showAssign, setShowAssign] = useState(false);
+  const [selected, setSelected] = React.useState([]);
+  const [MCPs, setMCPs] = React.useState([]);
+  const location = useLocation();
+  const { isLogin, userID } = location.state;
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyCTtc1rWtMOgBr86wkvAxmhUJ3THUoed8A",
   });
-  const [MCPs, setMCPs] = React.useState([])
-  React.useState(()=>{
-      axios.get("http://localhost:8000/viewMCP").then((res)=>{
-          setMCPs(res.data)
-      }).catch(err=>{
-          console.log(err);
-      })
-  },[])
+
   const onUnmount = React.useCallback(function callback(map) {
     setMap(null);
   }, []);
-  /*Login */
-  const location = useLocation();
-  const { isLogin, userID } = location.state;
-  /*End Login */
+
+  React.useState(() => {
+    axios
+      .get("http://localhost:8000/viewMCP")
+      .then((res) => {
+        setMCPs(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+  React.useEffect(() => {
+    console.log(selected);
+  }, [selected]);
+
   function handleShowBar() {
     setShowSidebar(!showSidebar);
     if (!showSidebar) {
       setShowFeatures("Assign task");
     }
+  }
+  function handleShowAssign(){
+    setShowAssign(false);
   }
   function handleShowProfile() {
     setShowProfile(!showProfile);
@@ -82,7 +96,7 @@ export default function Sidebar() {
               <li onClick={() => setShowFeatures("Assign vehicles")}>
                 <BsFillTruckFrontFill />
               </li>
-              <li onClick={() => setShowFeatures("Assign workers")}>
+              <li onClick={() => setShowFeatures("View workers")}>
                 <FiUserPlus />
               </li>
               <li onClick={() => setShowFeatures("View MCPs")}>
@@ -91,7 +105,7 @@ export default function Sidebar() {
             </ul>
             {showFeatures == "Assign task" ? (
               <div className="BO--task">
-                <TaskAssignment MCPs={MCPs}/>
+                <TaskAssignment MCPs={MCPs} setSelected={setSelected} setShowAssign={setShowAssign}/>
               </div>
             ) : (
               <div className="BO--featuresDisplay">{showFeatures}</div>
@@ -99,6 +113,8 @@ export default function Sidebar() {
           </div>
         )}
       </nav>
+      {showAssign && <Assign showAssign={handleShowAssign}/>}
+
       <main className="BO--content">
         {isLoaded && (
           <div
