@@ -1,5 +1,5 @@
 import React from "react";
-import "./index.css";
+import "./Task.css";
 import axios from "axios";
 import { MdAddTask } from "react-icons/md";
 import Checkbox from "@mui/material/Checkbox";

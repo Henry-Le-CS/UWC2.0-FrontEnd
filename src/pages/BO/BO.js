@@ -15,7 +15,7 @@ import { FiUserPlus } from "react-icons/fi";
 import { ImLocation } from "react-icons/im";
 import TaskAssignment from "../../components/Task/taskAssignment";
 import Profile from "../../components/Profile/Profile";
-import Assign from "../../components/Assign/Assign"
+import Assign from "../../components/Assign/Assign";
 const containerStyle = {
   width: "100%",
   height: "100vh",
@@ -39,11 +39,20 @@ export default function Sidebar() {
   const [MCPs, setMCPs] = React.useState([]);
   const location = useLocation();
   const { isLogin, userID } = location.state;
+  const [workerData, setWorkerData] = React.useState([]);
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyCTtc1rWtMOgBr86wkvAxmhUJ3THUoed8A",
   });
-
+  React.useEffect(() => {
+    axios
+      .get("http://localhost:8000/viewWorker")
+      .then((res) => {
+        console.log(res.data);
+        setWorkerData(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
   const onUnmount = React.useCallback(function callback(map) {
     setMap(null);
   }, []);
@@ -58,9 +67,6 @@ export default function Sidebar() {
         console.log(err);
       });
   }, []);
-  React.useEffect(() => {
-    console.log(selected);
-  }, [selected]);
 
   function handleShowBar() {
     setShowSidebar(!showSidebar);
@@ -68,7 +74,7 @@ export default function Sidebar() {
       setShowFeatures("Assign task");
     }
   }
-  function handleShowAssign(){
+  function handleShowAssign() {
     setShowAssign(false);
   }
   function handleShowProfile() {
@@ -105,7 +111,11 @@ export default function Sidebar() {
             </ul>
             {showFeatures == "Assign task" ? (
               <div className="BO--task">
-                <TaskAssignment MCPs={MCPs} setSelected={setSelected} setShowAssign={setShowAssign}/>
+                <TaskAssignment
+                  MCPs={MCPs}
+                  setSelected={setSelected}
+                  setShowAssign={setShowAssign}
+                />
               </div>
             ) : (
               <div className="BO--featuresDisplay">{showFeatures}</div>
@@ -113,7 +123,9 @@ export default function Sidebar() {
           </div>
         )}
       </nav>
-      {showAssign && <Assign showAssign={handleShowAssign}/>}
+      {showAssign && (
+        <Assign showAssign={handleShowAssign} selectedMCPs={selected} workerData={workerData}/>
+      )}
 
       <main className="BO--content">
         {isLoaded && (

@@ -6,7 +6,6 @@
 
 .Profile--showBtn {
     height: 36px;
-    width: 50px;
 }
 
 .Profile--showBtn button {
@@ -17,6 +16,8 @@
     align-items: center;
     display: flex;
     justify-content: center;
+    color: white;
+    background-color: #4CAF50;
 }
 
 .Profile--showBtn button:hover{
