@@ -79,6 +79,7 @@ function Assign(props) {
       .catch((err) => {
         console.log(err);
       });
+    props.showAssign()
   }
   //---------End submit to server---------
   function handleTimeChange(event) {
