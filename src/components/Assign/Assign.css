@@ -11,7 +11,7 @@
   display: flex;
   flex-direction: column;
   min-width: 500px;
-  
+  min-height: 300px;
   /* align-items: center; */
 }
 .assign--header {
@@ -178,4 +178,15 @@
 }
 .assign--worker--status{
 
+}
+.assign--select--time{
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+.assign--select--component{
+  margin-left: 10px;
+  border-radius: 10px;
+  /* text-align: center; */
 }

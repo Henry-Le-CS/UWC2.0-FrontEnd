@@ -26,7 +26,7 @@ function Card({profileInfo}) {
           Day of birth: <span>{profileInfo.day_of_birth}</span>
         </h3>
         <h3>
-          Email: <span style={{textTransform: 'lowercase'}}>{profileInfo.day_of_birth}</span>
+          Email: <span style={{textTransform: 'lowercase'}}>{profileInfo.email}</span>
         </h3>
         <h3>
           Phone: <span>{profileInfo.phone_number}</span>

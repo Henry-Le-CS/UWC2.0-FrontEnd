@@ -34,9 +34,13 @@ function TaskAssignment(props) {
         />
       </form>
       <form className="TA--MCP" onSubmit={handleSubmit}>
-        <button type="submit" className="TA--assignBtn" onClick={()=>{
-          props.setShowAssign(true);
-        }}>
+        <button
+          type="submit"
+          className="TA--assignBtn"
+          onClick={() => {
+            props.setShowAssign(true);
+          }}
+        >
           Assign MCP(s) for workers
         </button>
         <div>

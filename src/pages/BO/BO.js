@@ -43,6 +43,7 @@ export default function Sidebar() {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyCTtc1rWtMOgBr86wkvAxmhUJ3THUoed8A",
+    // AIzaSyCTtc1rWtMOgBr86wkvAxmhUJ3THUoed8A
   });
   React.useEffect(() => {
     axios
@@ -82,7 +83,7 @@ export default function Sidebar() {
   }
 
   return (
-    <div className="BO--container">
+    <div className="BO--container">x``
       <nav
         className={
           showSidebar ? "BO--sidebar BO--sidebar_addition" : "BO--sidebar"
@@ -135,6 +136,7 @@ export default function Sidebar() {
           showAssign={handleShowAssign}
           selectedMCPs={selected}
           workerData={workerData}
+          setShowAssign={setShowAssign}
         />
       )}
 

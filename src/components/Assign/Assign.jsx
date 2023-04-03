@@ -6,6 +6,41 @@ import axios from "axios";
 function Assign(props) {
   const workerData = props.workerData;
   const [selectedWorker, setSelectedWorker] = React.useState([]);
+  const [selectedDate, setSelectedDate] = React.useState({
+    day: 1,
+    month: "January",
+    year: "2023",
+  });
+  // ---------CREATE TIME ARRAY---------
+  const days = Array.from(Array(31).keys()).map((day) => (
+    <option name={day+1} key={day + 1} value={day + 1}>
+      {day + 1}
+    </option>
+  ));
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ].map((month) => (
+    <option key={month} value={month}>
+      {month}
+    </option>
+  ));
+  const years = Array.from(Array(100).keys()).map((year) => (
+    <option key={year + 1} value={year + 2023}>
+      {year + 2023}
+    </option>
+  ));
+  //---------END CREATE TIME ARRAY---------
   function handleCheckBox(event) {
     const checked = event.target.checked;
     const workerID = event.target.value;
@@ -19,17 +54,31 @@ function Assign(props) {
       );
     }
   }
+
+  //---------Submit to server---------
   function handleSubmit(event) {
     event.preventDefault();
+    console.log(selectedWorker,selectedDate)
     axios
       .post("http://localhost:8000/assignUser", {
         mcp_id: props.selectedMCPs,
         worker_id: selectedWorker,
+        timeStamp: selectedDate,
       })
       .then((res) => {
         console.log(res);
       })
       .catch((err) => console.log(err));
+    props.setShowAssign(false);
+  }
+  //---------End submit to server---------
+  function handleTimeChange(event) {
+    setSelectedDate(prevSelectedDate=>{
+      return {
+        ...prevSelectedDate,
+        [event.target.name]: event.target.value,
+      }
+    })
   }
   return (
     <div className="assign--container">
@@ -84,6 +133,26 @@ function Assign(props) {
                   </div>
                 );
               })}
+          </div>
+          <div className="assign--select--time">
+            <label>
+              Day: 
+              <select className="assign--select--component" name="day" value={selectedDate.day} onChange={handleTimeChange}>
+                {days}
+              </select>
+            </label>
+            <label>
+              Month: 
+              <select className="assign--select--component" name="month" value={selectedDate.month} onChange={handleTimeChange}>
+                {months}
+              </select>
+            </label>
+            <label>
+              Year: 
+              <select className="assign--select--component" name="year" value={selectedDate.year} onChange={handleTimeChange}>
+                {years}
+              </select>
+            </label>
           </div>
           <button className="assign--submit--btn" type="submit">
             Assign
