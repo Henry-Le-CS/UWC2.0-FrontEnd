@@ -41,11 +41,13 @@ export default function Sidebar() {
   const location = useLocation();
   const { isLogin, userID } = location.state;
   const [workerData, setWorkerData] = React.useState([]);
+  const [isSubmit, setIsSubmit] = React.useState(false);
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyCTtc1rWtMOgBr86wkvAxmhUJ3THUoed8A",
     // AIzaSyCTtc1rWtMOgBr86wkvAxmhUJ3THUoed8A
   });
+
   const onUnmount = React.useCallback(function callback(map) {
     setMap(null);
   }, []);
@@ -53,22 +55,24 @@ export default function Sidebar() {
     axios
       .get("http://localhost:8000/viewWorker")
       .then((res) => {
-        console.log(res.data);
+
         setWorkerData(res.data);
       })
       .catch((err) => console.log(err));
-  }, []);
-
+  }, [selected]);
   React.useState(() => {
+    console.log("get data mcp")
     axios
       .get("http://localhost:8000/viewMCP")
       .then((res) => {
+        console.log(res.data)
         setMCPs(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+    
+  }, [showAssign]);
 
   function handleShowBar() {
     setShowSidebar(!showSidebar);
@@ -79,12 +83,26 @@ export default function Sidebar() {
   function handleShowAssign() {
     setShowAssign(false);
   }
+
   function handleShowProfile() {
     setShowProfile(!showProfile);
   }
+  function handleIsSubmit() {
+    setIsSubmit(!isSubmit);
+  }
+  function handleSelected() {
+    console.log(selected)
+    setShowAssign(false)
+    console.log("hihihi")
+  }
+  function updateMCPs(newMCPs){
+    setMCPs(newMCPs)
+    console.log("i was herre")
+  }
 
   return (
-    <div className="BO--container">x``
+    <div className="BO--container">
+      x``
       <nav
         className={
           showSidebar ? "BO--sidebar BO--sidebar_addition" : "BO--sidebar"
@@ -126,7 +144,9 @@ export default function Sidebar() {
                   setShowAssign={setShowAssign}
                 />
               </div>
-            ) : showFeatures=="Assign vehicles" ? <Vehicle/> :(
+            ) : showFeatures == "Assign vehicles" ? (
+              <Vehicle />
+            ) : (
               <div className="BO--featuresDisplay">{showFeatures}</div>
             )}
           </div>
@@ -136,11 +156,12 @@ export default function Sidebar() {
         <Assign
           showAssign={handleShowAssign}
           selectedMCPs={selected}
+          setSelected={handleSelected}
           workerData={workerData}
           setShowAssign={setShowAssign}
+          onUpdate={updateMCPs}
         />
       )}
-
       <main className="BO--content">
         {isLoaded && (
           <div

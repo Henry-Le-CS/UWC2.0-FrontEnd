@@ -13,7 +13,7 @@ function Assign(props) {
   });
   // ---------CREATE TIME ARRAY---------
   const days = Array.from(Array(31).keys()).map((day) => (
-    <option name={day+1} key={day + 1} value={day + 1}>
+    <option name={day + 1} key={day + 1} value={day + 1}>
       {day + 1}
     </option>
   ));
@@ -56,10 +56,11 @@ function Assign(props) {
   }
 
   //---------Submit to server---------
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    console.log(selectedWorker,selectedDate)
-    axios
+    console.log(props.selectedMCPs);
+    console.log(selectedWorker, selectedDate);
+    await axios
       .post("http://localhost:8000/assignUser", {
         mcp_id: props.selectedMCPs,
         worker_id: selectedWorker,
@@ -69,16 +70,24 @@ function Assign(props) {
         console.log(res);
       })
       .catch((err) => console.log(err));
-    props.setShowAssign(false);
+    await axios
+      .get("http://localhost:8000/viewMCP")
+      .then((res) => {
+        console.log(res.data)
+        props.onUpdate(res.data)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
   //---------End submit to server---------
   function handleTimeChange(event) {
-    setSelectedDate(prevSelectedDate=>{
+    setSelectedDate((prevSelectedDate) => {
       return {
         ...prevSelectedDate,
         [event.target.name]: event.target.value,
-      }
-    })
+      };
+    });
   }
   return (
     <div className="assign--container">
@@ -136,20 +145,35 @@ function Assign(props) {
           </div>
           <div className="assign--select--time">
             <label>
-              Day: 
-              <select className="assign--select--component" name="day" value={selectedDate.day} onChange={handleTimeChange}>
+              Day:
+              <select
+                className="assign--select--component"
+                name="day"
+                value={selectedDate.day}
+                onChange={handleTimeChange}
+              >
                 {days}
               </select>
             </label>
             <label>
-              Month: 
-              <select className="assign--select--component" name="month" value={selectedDate.month} onChange={handleTimeChange}>
+              Month:
+              <select
+                className="assign--select--component"
+                name="month"
+                value={selectedDate.month}
+                onChange={handleTimeChange}
+              >
                 {months}
               </select>
             </label>
             <label>
-              Year: 
-              <select className="assign--select--component" name="year" value={selectedDate.year} onChange={handleTimeChange}>
+              Year:
+              <select
+                className="assign--select--component"
+                name="year"
+                value={selectedDate.year}
+                onChange={handleTimeChange}
+              >
                 {years}
               </select>
             </label>
