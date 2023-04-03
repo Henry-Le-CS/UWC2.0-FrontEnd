@@ -43,7 +43,7 @@ function TaskAssignment(props) {
         >
           Assign MCP(s) for workers
         </button>
-        <div>
+        <div className="TA--MCP--container">
           {MCPs.map((MCP, index) => {
             return (
               <div className="TA--MCP--display" key={index}>

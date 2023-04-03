@@ -16,6 +16,7 @@ import { ImLocation } from "react-icons/im";
 import TaskAssignment from "../../components/Task/taskAssignment";
 import Profile from "../../components/Profile/Profile";
 import Assign from "../../components/Assign/Assign";
+import Vehicle from "../../components/Vehicle/Vehicle";
 const containerStyle = {
   width: "100%",
   height: "100vh",
@@ -45,6 +46,9 @@ export default function Sidebar() {
     googleMapsApiKey: "AIzaSyCTtc1rWtMOgBr86wkvAxmhUJ3THUoed8A",
     // AIzaSyCTtc1rWtMOgBr86wkvAxmhUJ3THUoed8A
   });
+  const onUnmount = React.useCallback(function callback(map) {
+    setMap(null);
+  }, []);
   React.useEffect(() => {
     axios
       .get("http://localhost:8000/viewWorker")
@@ -53,9 +57,6 @@ export default function Sidebar() {
         setWorkerData(res.data);
       })
       .catch((err) => console.log(err));
-  }, []);
-  const onUnmount = React.useCallback(function callback(map) {
-    setMap(null);
   }, []);
 
   React.useState(() => {
@@ -125,7 +126,7 @@ export default function Sidebar() {
                   setShowAssign={setShowAssign}
                 />
               </div>
-            ) : (
+            ) : showFeatures=="Assign vehicles" ? <Vehicle/> :(
               <div className="BO--featuresDisplay">{showFeatures}</div>
             )}
           </div>

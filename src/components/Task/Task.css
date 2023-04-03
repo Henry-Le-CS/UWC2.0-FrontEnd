@@ -16,7 +16,7 @@ html::-webkit-scrollbar {
 .TA--MCP::-webkit-scrollbar {
   display: none;
 }
-.TA--MCP > div{
+.TA--MCP--container{
   width: 100%;
     /* height: 100%; */
   overflow-y: scroll;
@@ -132,7 +132,11 @@ input[type="checkbox"] {
     position: sticky;
     top: 0;
     z-index: 1;
+    height: 56px;
     margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 20px;
     border-radius: 30px;
     background-color: #4CAF50;
