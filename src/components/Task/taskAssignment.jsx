@@ -21,9 +21,12 @@ function TaskAssignment(props) {
       }
     });
   };
+  function handleSearch(event){
+    event.preventDefault();
+  }
   return (
     <div className="TA--container">
-      <form className="TA--search--container">
+      <form className="TA--search--container" onSubmit={handleSearch}>
         <button className="TA--search--btn" type="submit">
           search
         </button>
@@ -51,7 +54,7 @@ function TaskAssignment(props) {
                   <h2
                     style={{
                       fontSize: "26px",
-                      fontWeight: "500",
+                      fontWeight: "bold",
                       letterSpacing: "0px",
                     }}
                   >

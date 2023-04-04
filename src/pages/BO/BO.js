@@ -17,6 +17,7 @@ import TaskAssignment from "../../components/Task/taskAssignment";
 import Profile from "../../components/Profile/Profile";
 import Assign from "../../components/Assign/Assign";
 import Vehicle from "../../components/Vehicle/Vehicle";
+import AssignVehicle from "../../components/Vehicle/Assign/AssignVehicle"
 const containerStyle = {
   width: "100%",
   height: "100vh",
@@ -42,6 +43,10 @@ export default function Sidebar() {
   const { isLogin, userID } = location.state;
   const [workerData, setWorkerData] = React.useState([]);
   const [isSubmit, setIsSubmit] = React.useState(false);
+  const [groupData, setGroupData] = React.useState([]);
+  const [selectedGroup,setSelectedGroup] = React.useState("")
+  const [showVehicle,setShowVehicle] = React.useState(false);
+  const [vehicle,setVehicle] = React.useState([])
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyCTtc1rWtMOgBr86wkvAxmhUJ3THUoed8A",
@@ -61,7 +66,6 @@ export default function Sidebar() {
       .catch((err) => console.log(err));
   }, [selected]);
   React.useState(() => {
-    console.log("get data mcp")
     axios
       .get("http://localhost:8000/viewMCP")
       .then((res) => {
@@ -73,6 +77,24 @@ export default function Sidebar() {
       });
     
   }, [showAssign]);
+  React.useEffect(() => {
+    axios
+      .get("http://localhost:8000/viewGroup")
+      .then((response) => {
+        setGroupData(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+  React.useEffect(()=>{
+    axios.get("http://localhost:8000/viewVehicle")
+      .then(response=>{
+        setVehicle(response.data)
+        console.log(response.data)
+      })
+      .catch(err=> console.log(err))
+  },[])
 
   function handleShowBar() {
     setShowSidebar(!showSidebar);
@@ -99,7 +121,9 @@ export default function Sidebar() {
     setMCPs(newMCPs)
     console.log("i was herre")
   }
-
+  function handleShowVehicle(){
+    setShowVehicle(!showVehicle)
+  }
   return (
     <div className="BO--container">
       x``
@@ -145,14 +169,14 @@ export default function Sidebar() {
                 />
               </div>
             ) : showFeatures == "Assign vehicles" ? (
-              <Vehicle />
+              <Vehicle groupData = {groupData} setShowVehicle={handleShowVehicle} setSelectedGroup={setSelectedGroup}/>
             ) : (
               <div className="BO--featuresDisplay">{showFeatures}</div>
             )}
           </div>
         )}
       </nav>
-      {showAssign && (
+      {showAssign ? (
         <Assign
           showAssign={handleShowAssign}
           selectedMCPs={selected}
@@ -160,8 +184,8 @@ export default function Sidebar() {
           workerData={workerData}
           setShowAssign={setShowAssign}
           onUpdate={updateMCPs}
-        />
-      )}
+        />) : showVehicle ? <AssignVehicle setShowVehicle={handleShowVehicle} vehicle={vehicle} selectedGroup={selectedGroup}/> : <></>
+      }
       <main className="BO--content">
         {isLoaded && (
           <div

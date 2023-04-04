@@ -90,6 +90,9 @@ function Assign(props) {
       };
     });
   }
+  function handleSearch(event){
+    event.preventDefault();
+  }
   return (
     <div className="assign--container">
       <div className="assign--header">
@@ -101,7 +104,7 @@ function Assign(props) {
         </div>
       </div>
       <div className="assign--content">
-        <form className="assign--search--container">
+        <form className="assign--search--container" onSubmit={handleSearch}>
           <button className="assign--search--btn" type="submit">
             search
           </button>

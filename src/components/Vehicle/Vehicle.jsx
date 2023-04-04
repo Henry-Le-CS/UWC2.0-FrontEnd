@@ -11,51 +11,31 @@ import React from "react";
 import "./Vehicle.css";
 import { Checkbox } from "@mui/material";
 import { MdAddTask } from "react-icons/md";
-const MCPs = [
-  {
-    location: "268 LTK",
-    priority: 3,
-  },
-  {
-    location: "268 LTK",
-    priority: 3,
-  },
-  {
-    location: "268 LTK",
-    priority: 3,
-  },
-  {
-    location: "268 LTK",
-    priority: 3,
-  },
-  {
-    location: "268 LTK",
-    priority: 3,
-  },
-  {
-    location: "268 LTK",
-    priority: 3,
-  },
-  {
-    location: "268 LTK",
-    priority: 3,
-  },
-  {
-    location: "268 LTK",
-    priority: 3,
-  },
-];
-function Vehicle() {
+import axios from "axios";
+function Vehicle(props) {
+  const groupData = props.groupData;
+  const [selectedGroup, setSelectedGroup] = React.useState("");
+  groupData.sort((a, b) => b.mcp_id.length - a.mcp_id.length);
   function handleSubmit(event) {
     event.preventDefault();
+    console.log(event.nativeEvent.submitter.name);
+    if (event.nativeEvent.submitter.name == "assign") {
+      props.setSelectedGroup(selectedGroup);
+      props.setShowVehicle();
+    } else {
+      console.log("remove");
+    }
   }
-  function handleClickBox() {
-    console.log("hi");
+  function handleClickBox(event) {
+    setSelectedGroup(event.target.value);
   }
   function Checkbox() {}
+  function handleSearch(event) {
+    event.preventDefault();
+  }
   return (
     <div className="vehicle--container">
-      <form className="TA--search--container">
+      <form className="TA--search--container" onSubmit={handleSearch}>
         <button className="TA--search--btn" type="submit">
           search
         </button>
@@ -68,59 +48,62 @@ function Vehicle() {
       <form className="TA--MCP vehicle--group" onSubmit={handleSubmit}>
         <div name="assign" className="vehicle--submitBtn">
           <button
+            name="assign"
             type="submit"
             className="TA--assignBtn vehicle--assignBtn"
-            onClick={() => {
-              // props.setShowAssign(true);
-            }}
+            // onClick={() => {
+            //   props.setShowVehicle();
+            // }}
           >
             Assign vehicle
           </button>
           <button
+            // name = "remove"
             name="remove"
             type="submit"
             className="TA--assignBtn vehicle--assignBtn vehicle--removeBtn"
-            onClick={() => {
-              // props.setShowAssign(true);
-            }}
+            // onClick={() => {
+            // }}
           >
             Remove group
           </button>
         </div>
 
         <div className="TA--MCP--container">
-          {MCPs.map((MCP, index) => {
+          {groupData.map((Group, index) => {
             return (
-              <label htmlFor={"mcpSelection"+index} className="TA--MCP--display" key={index}>
-                <div className="TA--MCP--info">
+              <label
+                htmlFor={"mcpSelection" + index}
+                className="TA--MCP--display"
+                key={index}
+              >
+                <div className="TA--MCP--info vehicle--group--info">
                   <h2
                     style={{
                       fontSize: "26px",
-                      fontWeight: "500",
+                      fontWeight: "bold",
                       letterSpacing: "0px",
                     }}
                   >
-                    {MCP.location}
+                    Group {index + 1}
                   </h2>
-                  {MCP.priority == 3 ? (
-                    <h5 style={{ color: "red", fontWeight: "bold" }}>
-                      Status: Full
-                    </h5>
-                  ) : MCP.priority == 2 ? (
-                    <h5 style={{ color: "orange", fontWeight: "bold" }}>
-                      Status: Half-full
-                    </h5>
-                  ) : (
-                    <h5 style={{ color: "green", fontWeight: "bold" }}>
-                      Status: Good
-                    </h5>
-                  )}
+                  <div className="vehicle--container--displayInfo">
+                    <div className="vehicle--displayInfo">
+                      <span>#MCP:</span> {Group.mcp_id.length}
+                    </div>
+                    <div className="vehicle--displayInfo">
+                      <span>#Worker:</span> {Group.worker_id.length}
+                    </div>
+                  </div>
+                  <div>
+                    <span style={{fontWeight: "bold"}}>Date:</span> {Group.day} {Group.month} {Group.year}
+                  </div>
                 </div>
                 <input
-                    id={"mcpSelection"+index}
+                  id={"mcpSelection" + index}
                   type="radio"
                   name="mcpSelection"
-                  value={MCP.id}
+                  value={Group._id}
                   className="vehicle--radio"
                   onClick={handleClickBox}
                 />
