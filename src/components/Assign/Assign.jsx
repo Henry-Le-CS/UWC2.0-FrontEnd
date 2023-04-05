@@ -73,13 +73,15 @@ function Assign(props) {
     await axios
       .get("http://localhost:8000/viewMCP")
       .then((res) => {
-        console.log(res.data)
-        props.onUpdate(res.data)
+        console.log(res.data);
+        props.onUpdate(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-    props.showAssign()
+    const response1 = await axios.get("http://localhost:8000/viewGroup");
+    props.setGroupData(response1.data);
+    props.showAssign();
   }
   //---------End submit to server---------
   function handleTimeChange(event) {
@@ -90,7 +92,7 @@ function Assign(props) {
       };
     });
   }
-  function handleSearch(event){
+  function handleSearch(event) {
     event.preventDefault();
   }
   return (

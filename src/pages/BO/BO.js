@@ -18,6 +18,7 @@ import Profile from "../../components/Profile/Profile";
 import Assign from "../../components/Assign/Assign";
 import Vehicle from "../../components/Vehicle/Vehicle";
 import AssignVehicle from "../../components/Vehicle/Assign/AssignVehicle"
+import Remove from "../../components/Vehicle/Remove/Remove";
 const containerStyle = {
   width: "100%",
   height: "100vh",
@@ -47,6 +48,8 @@ export default function Sidebar() {
   const [selectedGroup,setSelectedGroup] = React.useState("")
   const [showVehicle,setShowVehicle] = React.useState(false);
   const [vehicle,setVehicle] = React.useState([])
+  const [removeGroup, setRemoveGroup] = React.useState([]);
+  const [isSure,setIsSure] = React.useState(false)
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyCTtc1rWtMOgBr86wkvAxmhUJ3THUoed8A",
@@ -95,7 +98,9 @@ export default function Sidebar() {
       })
       .catch(err=> console.log(err))
   },[])
+  // React.useEffect(()=>{
 
+  // },[])
   function handleShowBar() {
     setShowSidebar(!showSidebar);
     if (!showSidebar) {
@@ -113,20 +118,21 @@ export default function Sidebar() {
     setIsSubmit(!isSubmit);
   }
   function handleSelected() {
-    console.log(selected)
     setShowAssign(false)
-    console.log("hihihi")
   }
   function updateMCPs(newMCPs){
+    console.log(newMCPs)
     setMCPs(newMCPs)
-    console.log("i was herre")
+  }
+  function updateGroup(group){
+    console.log(group)
+    setGroupData(group)
   }
   function handleShowVehicle(){
     setShowVehicle(!showVehicle)
   }
   return (
     <div className="BO--container">
-      x``
       <nav
         className={
           showSidebar ? "BO--sidebar BO--sidebar_addition" : "BO--sidebar"
@@ -169,7 +175,7 @@ export default function Sidebar() {
                 />
               </div>
             ) : showFeatures == "Assign vehicles" ? (
-              <Vehicle groupData = {groupData} setShowVehicle={handleShowVehicle} setSelectedGroup={setSelectedGroup}/>
+              <Vehicle setIsSure={setIsSure} setRemoveGroup={setRemoveGroup} groupData = {groupData} setShowVehicle={handleShowVehicle} setSelectedGroup={setSelectedGroup}/>
             ) : (
               <div className="BO--featuresDisplay">{showFeatures}</div>
             )}
@@ -184,7 +190,9 @@ export default function Sidebar() {
           workerData={workerData}
           setShowAssign={setShowAssign}
           onUpdate={updateMCPs}
-        />) : showVehicle ? <AssignVehicle setShowVehicle={handleShowVehicle} vehicle={vehicle} selectedGroup={selectedGroup}/> : <></>
+          setGroupData={updateGroup}
+        />) : showVehicle ? <AssignVehicle setGroupData={setGroupData} setShowVehicle={handleShowVehicle} vehicle={vehicle} selectedGroup={selectedGroup}/> 
+        :isSure? <Remove setMCPs={updateMCPs} setGroupData={updateGroup} setIsSure={setIsSure} selectedGroup={selectedGroup}/> :<></>
       }
       <main className="BO--content">
         {isLoaded && (

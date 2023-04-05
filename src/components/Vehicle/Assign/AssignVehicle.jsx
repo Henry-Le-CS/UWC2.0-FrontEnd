@@ -18,28 +18,38 @@ function AssignVehicle(props) {
   async function handleSubmit(event) {
     event.preventDefault();
     let groupChosen;
-    await axios.get("http://localhost:8000/viewGroup").then((response) => {
-      const Group = response.data.find((group) => {
-        return group._id == props.selectedGroup;
+    if (props.selectedGroup) {
+      await axios.get("http://localhost:8000/viewGroup").then((response) => {
+        const Group = response.data.find((group) => {
+          return group._id == props.selectedGroup;
+        });
+        if (
+          Group.worker_id.length >
+          selectedVehicle.capacity - selectedVehicle.current_capacity
+        ) {
+          setIsPossible(false);
+        } else {
+          setIsPossible(true);
+          groupChosen = Group;
+        }
       });
-      if (
-        Group.worker_id.length >
-        selectedVehicle.capacity - selectedVehicle.current_capacity
-      ) {
-        setIsPossible(false)
-      } else {
-        setIsPossible(true)
-        groupChosen=Group
-      }
-    });
-    await axios.post("http://localhost:8000/assignVehicle",{
+      await axios.post("http://localhost:8000/assignVehicle", {
         selectedVehicle_id: selectedVehicle._id,
         selectedGroup: groupChosen,
-    })
+      });
+      await axios
+      .get("http://localhost:8000/viewGroup")
+      .then((response) => {
+        props.setGroupData(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    }
   }
   function handleCheckBox(event) {
     setSelectedVehicle(JSON.parse(event.target.value));
-    console.log(selectedVehicle)
+    console.log(selectedVehicle);
   }
 
   return (
@@ -73,7 +83,7 @@ function AssignVehicle(props) {
                   b.capacity - a.capacity
               )
               .map((vehicle, index) => {
-                return (
+                return !vehicle.isAssigned ? (
                   <div className="assign--worker--display">
                     <div>
                       <div className="assign--worker--info">
@@ -103,10 +113,16 @@ function AssignVehicle(props) {
                       onClick={handleCheckBox}
                     />
                   </div>
+                ) : (
+                  <></>
                 );
               })}
           </div>
-          {!isPossible && <h5 style={{color: "red", marginTop: "5px"}}>The chosen vehicle does not have enough slot</h5>}
+          {!isPossible && (
+            <h5 style={{ color: "red", marginTop: "5px" }}>
+              The chosen vehicle does not have enough slot
+            </h5>
+          )}
           <button className="assign--submit--btn" type="submit">
             Assign
           </button>
