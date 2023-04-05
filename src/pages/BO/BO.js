@@ -17,8 +17,10 @@ import TaskAssignment from "../../components/Task/taskAssignment";
 import Profile from "../../components/Profile/Profile";
 import Assign from "../../components/Assign/Assign";
 import Vehicle from "../../components/Vehicle/Vehicle";
-import AssignVehicle from "../../components/Vehicle/Assign/AssignVehicle"
+import AssignVehicle from "../../components/Vehicle/Assign/AssignVehicle";
 import Remove from "../../components/Vehicle/Remove/Remove";
+import ViewWorker from "../../components/ViewWorker/ViewWorker";
+import Detail from "../../components/ViewWorker/Details/detail";
 const containerStyle = {
   width: "100%",
   height: "100vh",
@@ -45,11 +47,14 @@ export default function Sidebar() {
   const [workerData, setWorkerData] = React.useState([]);
   const [isSubmit, setIsSubmit] = React.useState(false);
   const [groupData, setGroupData] = React.useState([]);
-  const [selectedGroup,setSelectedGroup] = React.useState("")
-  const [showVehicle,setShowVehicle] = React.useState(false);
-  const [vehicle,setVehicle] = React.useState([])
+  const [selectedGroup, setSelectedGroup] = React.useState("");
+  const [showVehicle, setShowVehicle] = React.useState(false);
+  const [vehicle, setVehicle] = React.useState([]);
   const [removeGroup, setRemoveGroup] = React.useState([]);
-  const [isSure,setIsSure] = React.useState(false)
+  const [isSure, setIsSure] = React.useState(false);
+  const [selectViewed, setSelectViewed] = React.useState("");
+  const [workerView, setSelectWorkerView] = React.useState("");
+  const [showViewWorker, setShowWorker] = React.useState(false);
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyCTtc1rWtMOgBr86wkvAxmhUJ3THUoed8A",
@@ -63,7 +68,6 @@ export default function Sidebar() {
     axios
       .get("http://localhost:8000/viewWorker")
       .then((res) => {
-
         setWorkerData(res.data);
       })
       .catch((err) => console.log(err));
@@ -72,13 +76,11 @@ export default function Sidebar() {
     axios
       .get("http://localhost:8000/viewMCP")
       .then((res) => {
-        console.log(res.data)
         setMCPs(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-    
   }, [showAssign]);
   React.useEffect(() => {
     axios
@@ -90,17 +92,27 @@ export default function Sidebar() {
         console.log(err);
       });
   }, []);
-  React.useEffect(()=>{
-    axios.get("http://localhost:8000/viewVehicle")
-      .then(response=>{
-        setVehicle(response.data)
-        console.log(response.data)
+  React.useEffect(() => {
+    axios
+      .get("http://localhost:8000/viewVehicle")
+      .then((response) => {
+        setVehicle(response.data);
       })
-      .catch(err=> console.log(err))
-  },[])
-  // React.useEffect(()=>{
-
-  // },[])
+      .catch((err) => console.log(err));
+  }, []);
+  React.useEffect(() => {
+    console.log("hi")
+    if (selectViewed) {
+      axios
+        .post("http://localhost:8000/findWorker", { _id: selectViewed })
+        .then((res) => {
+          setSelectWorkerView(res.data);
+          if(!showViewWorker) setShowWorker(true)
+        })
+        .catch((err) => console.log(err));
+    }
+    
+  }, []);
   function handleShowBar() {
     setShowSidebar(!showSidebar);
     if (!showSidebar) {
@@ -110,7 +122,17 @@ export default function Sidebar() {
   function handleShowAssign() {
     setShowAssign(false);
   }
-
+  function handleViewWorker(selectView){
+    if (selectView) {
+      axios
+        .post("http://localhost:8000/findWorker", { _id: selectView})
+        .then((res) => {
+          setSelectWorkerView(res.data);
+          if(!showViewWorker) setShowWorker(true)
+        })
+        .catch((err) => console.log(err));
+    }
+  }
   function handleShowProfile() {
     setShowProfile(!showProfile);
   }
@@ -118,21 +140,20 @@ export default function Sidebar() {
     setIsSubmit(!isSubmit);
   }
   function handleSelected() {
-    setShowAssign(false)
+    setShowAssign(false);
   }
-  function updateMCPs(newMCPs){
-    console.log(newMCPs)
-    setMCPs(newMCPs)
+  function updateMCPs(newMCPs) {
+    setMCPs(newMCPs);
   }
-  function updateGroup(group){
-    console.log(group)
-    setGroupData(group)
+  function updateGroup(group) {
+    setGroupData(group);
   }
-  function handleShowVehicle(){
-    setShowVehicle(!showVehicle)
+  function handleShowVehicle() {
+    setShowVehicle(!showVehicle);
   }
   return (
     <div className="BO--container">
+      {/* <div className="BO--background"></div> */}
       <nav
         className={
           showSidebar ? "BO--sidebar BO--sidebar_addition" : "BO--sidebar"
@@ -175,7 +196,21 @@ export default function Sidebar() {
                 />
               </div>
             ) : showFeatures == "Assign vehicles" ? (
-              <Vehicle setIsSure={setIsSure} setRemoveGroup={setRemoveGroup} groupData = {groupData} setShowVehicle={handleShowVehicle} setSelectedGroup={setSelectedGroup}/>
+              <Vehicle
+                setIsSure={setIsSure}
+                setRemoveGroup={setRemoveGroup}
+                groupData={groupData}
+                setShowVehicle={handleShowVehicle}
+                setSelectedGroup={setSelectedGroup}
+              />
+            ) : showFeatures == "View workers" ? (
+              <ViewWorker
+                setSelectViewed={setSelectViewed}
+                workerData={workerData}
+                setShowWorker={setShowWorker}
+                setSelectWorkerView={setSelectWorkerView}
+                handleViewWorker={handleViewWorker}
+              />
             ) : (
               <div className="BO--featuresDisplay">{showFeatures}</div>
             )}
@@ -191,9 +226,26 @@ export default function Sidebar() {
           setShowAssign={setShowAssign}
           onUpdate={updateMCPs}
           setGroupData={updateGroup}
-        />) : showVehicle ? <AssignVehicle setGroupData={setGroupData} setShowVehicle={handleShowVehicle} vehicle={vehicle} selectedGroup={selectedGroup}/> 
-        :isSure? <Remove setMCPs={updateMCPs} setGroupData={updateGroup} setIsSure={setIsSure} selectedGroup={selectedGroup}/> :<></>
-      }
+        />
+      ) : showVehicle ? (
+        <AssignVehicle
+          setGroupData={setGroupData}
+          setShowVehicle={handleShowVehicle}
+          vehicle={vehicle}
+          selectedGroup={selectedGroup}
+        />
+      ) : isSure ? (
+        <Remove
+          setMCPs={updateMCPs}
+          setGroupData={updateGroup}
+          setIsSure={setIsSure}
+          selectedGroup={selectedGroup}
+        />
+      ) : showViewWorker ? (
+        <Detail workerData={workerView} setShowWorker={setShowWorker} />
+      ) : (
+        <></>
+      )}
       <main className="BO--content">
         {isLoaded && (
           <div

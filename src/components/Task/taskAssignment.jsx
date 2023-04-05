@@ -3,6 +3,7 @@ import "./Task.css";
 import axios from "axios";
 import { MdAddTask } from "react-icons/md";
 import Checkbox from "@mui/material/Checkbox";
+
 function TaskAssignment(props) {
   let MCPs = props.MCPs.sort((a, b) => b.priority - a.priority);
   const [selectedMCPs, setSelectedMCPs] = React.useState([]);
@@ -21,7 +22,7 @@ function TaskAssignment(props) {
       }
     });
   };
-  function handleSearch(event){
+  function handleSearch(event) {
     event.preventDefault();
   }
   return (
@@ -53,7 +54,7 @@ function TaskAssignment(props) {
                 <div className="TA--MCP--info">
                   <h2
                     style={{
-                      fontSize: "26px",
+                      fontSize: "20px",
                       fontWeight: "bold",
                       letterSpacing: "0px",
                     }}

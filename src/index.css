@@ -1,35 +1,35 @@
-*{
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+@import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200&family=Press+Start+2P&display=swap");
+* {
   margin: 0;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
-html,body{
+html,
+body {
   height: 100vh;
 }
 
-#root{
+#root {
   height: 100vh;
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "Anuphan", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100vh;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-.my--app{
+.my--app {
   height: 100vh;
 }
-
 
 .uwc--background {
   background-image: url("./assets/UWC-background.png");
@@ -45,8 +45,6 @@ code {
   background-attachment: fixed;
 }
 
-
-
 .uwc--title {
   color: white;
   font-size: 100px;
@@ -57,10 +55,10 @@ code {
 
 .uwc--logo {
   text-align: center;
-  background-color: #18EF21;
+  background-color: #18ef21;
   border-radius: 50%;
   top: 136px;
-  margin-top: 40px; 
+  margin-top: 40px;
 }
 
 .uwc--logo-img {
