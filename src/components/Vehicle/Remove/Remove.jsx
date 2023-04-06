@@ -51,6 +51,7 @@ export default function Remove(props) {
           name="cancel"
           type="submit"
           style={{ backgroundColor: "#f67280" }}
+          onClick={handleClose}
         >
           Cancel
         </button>

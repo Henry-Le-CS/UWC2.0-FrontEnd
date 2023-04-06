@@ -24,15 +24,15 @@ export default function Detail(props) {
     });
   const [selectedDate, setSelectedDate] = React.useState(dateOptions[0]);
   const [selectedView, setSelectedView] = React.useState("MCPs");
-  const [MCP, setMCP] = React.useState({});
+  const [MCP, setMCP] = React.useState([]);
   const [CoWorkers, setCoWorkers] = React.useState({});
-  const [content, setContent] = React.useState({});
   React.useState(async () => {
     if (selectedDate) {
       const [filteredGroups] = groups.filter((group) => {
         const groupDate = `${group.day} ${group.month} ${group.year}`;
         return groupDate === selectedDate;
       });
+      setShowTask(true);
       await axios
         .post("http://localhost:8000/listInfo", {
           _id: workers._id,
@@ -43,7 +43,6 @@ export default function Detail(props) {
           setMCP(res.data.mcps);
           setCoWorkers(res.data.workers);
         });
-      setShowTask(true);
     }
   }, []);
   async function handleTimeChange(event) {
@@ -53,7 +52,7 @@ export default function Detail(props) {
       const groupDate = `${group.day} ${group.month} ${group.year}`;
       return groupDate === selectedDate;
     });
-    console.log("hi")
+
     await axios
       .post("http://localhost:8000/listInfo", {
         _id: workers._id,
@@ -66,13 +65,12 @@ export default function Detail(props) {
       });
   }
   async function handleViewChange(event) {
-    console.log(event.target.value);
-    console.log(selectedDate);
     setSelectedView(event.target.value);
     const [filteredGroups] = groups.filter((group) => {
       const groupDate = `${group.day} ${group.month} ${group.year}`;
       return groupDate === selectedDate;
     });
+
     await axios
       .post("http://localhost:8000/listInfo", {
         _id: workers._id,
@@ -155,7 +153,7 @@ export default function Detail(props) {
           <div className="detail--display">
             <h2>List of {selectedView == "MCPs" ? "MCPs" : "Co-workers"}</h2>
             <div className="detail--list">
-              {showTask ? (
+              {selectedDate ? (showTask ? (
                 selectedView == "MCPs" ? (
                   MCP.sort((a, b) => b.priority - a.priority).map((mcp) => {
                     return (
@@ -191,7 +189,7 @@ export default function Detail(props) {
                 )
               ) : (
                 <></>
-              )}
+              )):<h4 style={{textAlign:"center"}}>This worker has yet to be assigned any task</h4>}
             </div>
           </div>
         </div>

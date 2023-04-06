@@ -111,7 +111,6 @@ export default function Sidebar() {
         })
         .catch((err) => console.log(err));
     }
-    
   }, []);
   function handleShowBar() {
     setShowSidebar(!showSidebar);
