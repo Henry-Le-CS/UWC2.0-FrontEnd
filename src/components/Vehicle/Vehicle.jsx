@@ -9,8 +9,6 @@ Flow:
 */
 import React from "react";
 import "./Vehicle.css";
-import { Checkbox } from "@mui/material";
-import { MdAddTask } from "react-icons/md";
 import axios from "axios";
 function Vehicle(props) {
   const groupData = props.groupData;
@@ -18,7 +16,7 @@ function Vehicle(props) {
   groupData.sort((a, b) => b.mcp_id.length - a.mcp_id.length);
   async function handleSubmit(event) {
     event.preventDefault();
-    if (event.nativeEvent.submitter.name == "assign") {
+    if (event.nativeEvent.submitter.name === "assign") {
       if (selectedGroup) {
         props.setSelectedGroup(selectedGroup);
         props.setShowVehicle();
@@ -31,7 +29,6 @@ function Vehicle(props) {
             removeGroup: selectedGroup,
           })
           .then((res) => {
-            props.setRemoveGroup(res.data[0]);
             props.setIsSure(true);
           });
       }
@@ -40,7 +37,6 @@ function Vehicle(props) {
   function handleClickBox(event) {
     setSelectedGroup(event.target.value);
   }
-  function Checkbox() {}
   function handleSearch(event) {
     event.preventDefault();
   }
@@ -76,7 +72,7 @@ function Vehicle(props) {
 
         <div className="TA--MCP--container">
           {groupData
-            .filter((group) => group.vehicle_id == "")
+            .filter((group) => group.vehicle_id === "")
             .map((Group, index) => {
               return (
                 <label

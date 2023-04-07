@@ -5,7 +5,7 @@ import { MdAddTask } from "react-icons/md";
 import Checkbox from "@mui/material/Checkbox";
 
 function TaskAssignment(props) {
-  let MCPs = props.MCPs.sort((a, b) => b.priority - a.priority);
+  let MCPs = props.MCPs.filter(MCP=>!MCP.isAssigned).sort((a, b) => b.priority - a.priority);
   const [selectedMCPs, setSelectedMCPs] = React.useState([]);
   const handleSubmit = (e) => {
     e.preventDefault();

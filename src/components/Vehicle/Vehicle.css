@@ -101,3 +101,6 @@
 .vehicle--displayInfo >span{
   font-weight: bold;
 }
+.vehicle--group--info {
+  width: 80%;
+}

@@ -153,43 +153,49 @@ export default function Detail(props) {
           <div className="detail--display">
             <h2>List of {selectedView == "MCPs" ? "MCPs" : "Co-workers"}</h2>
             <div className="detail--list">
-              {selectedDate ? (showTask ? (
-                selectedView == "MCPs" ? (
-                  MCP.sort((a, b) => b.priority - a.priority).map((mcp) => {
-                    return (
-                      <div className="detail--list--mcp">
-                        <h4>{mcp.location}</h4>
-                        {mcp.priority == 3 ? (
-                          <h5 style={{ color: "red", fontWeight: "bold" }}>
-                            Status: Full
-                          </h5>
-                        ) : mcp.priority == 2 ? (
-                          <h5 style={{ color: "orange", fontWeight: "bold" }}>
-                            Status: Half-full
-                          </h5>
-                        ) : (
-                          <h5 style={{ color: "green", fontWeight: "bold" }}>
-                            Status: Good
-                          </h5>
-                        )}
-                      </div>
-                    );
-                  })
+              {selectedDate ? (
+                showTask ? (
+                  selectedView == "MCPs" ? (
+                    MCP.sort((a, b) => b.priority - a.priority).map((mcp) => {
+                      return (
+                        <div className="detail--list--mcp">
+                          <h4>{mcp.location}</h4>
+                          {mcp.priority == 3 ? (
+                            <h5 style={{ color: "red", fontWeight: "bold" }}>
+                              Status: Full
+                            </h5>
+                          ) : mcp.priority == 2 ? (
+                            <h5 style={{ color: "orange", fontWeight: "bold" }}>
+                              Status: Half-full
+                            </h5>
+                          ) : (
+                            <h5 style={{ color: "green", fontWeight: "bold" }}>
+                              Status: Good
+                            </h5>
+                          )}
+                        </div>
+                      );
+                    })
+                  ) : (
+                    CoWorkers.map((worker) => {
+                      return (
+                        <div className="detail--list--mcp">
+                          <h4>
+                            {worker.first_name} {worker.last_name}
+                          </h4>
+                          <h5>Phone: {worker.phone_number}</h5>
+                        </div>
+                      );
+                    })
+                  )
                 ) : (
-                  CoWorkers.map((worker) => {
-                    return (
-                      <div className="detail--list--mcp">
-                        <h4>
-                          {worker.first_name} {worker.last_name}
-                        </h4>
-                        <h5>Phone: {worker.phone_number}</h5>
-                      </div>
-                    );
-                  })
+                  <></>
                 )
               ) : (
-                <></>
-              )):<h4 style={{textAlign:"center"}}>This worker has yet to be assigned any task</h4>}
+                <h4 style={{ textAlign: "center" }}>
+                  This worker has yet to be assigned any task
+                </h4>
+              )}
             </div>
           </div>
         </div>

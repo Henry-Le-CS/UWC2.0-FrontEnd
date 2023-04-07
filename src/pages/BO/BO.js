@@ -1,13 +1,12 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState} from "react";
 import axios from "axios";
 import {
-  googleMapsApiKey,
   useJsApiLoader,
   Marker,
   GoogleMap,
 } from "@react-google-maps/api";
 import "./BO.css";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { MdAddTask } from "react-icons/md";
 import { BsFillTruckFrontFill } from "react-icons/bs";
@@ -21,13 +20,10 @@ import AssignVehicle from "../../components/Vehicle/Assign/AssignVehicle";
 import Remove from "../../components/Vehicle/Remove/Remove";
 import ViewWorker from "../../components/ViewWorker/ViewWorker";
 import Detail from "../../components/ViewWorker/Details/detail";
+import ViewMCP from "../../components/viewMCP/viewMCP";
 const containerStyle = {
   width: "100%",
   height: "100vh",
-};
-const center = {
-  lat: 10.772792707928192,
-  lng: 106.6577516415506,
 };
 const mapOptions = {
   fullscreenControl: false,
@@ -36,34 +32,33 @@ const mapOptions = {
 export default function Sidebar() {
   const [showSidebar, setShowSidebar] = useState(false);
   const [showFeatures, setShowFeatures] = useState("Assign task");
-  const [currentBO, setCurrentBO] = useState({});
-  const [map, setMap] = React.useState(null);
   const [showProfile, setShowProfile] = useState(false);
   const [showAssign, setShowAssign] = useState(false);
   const [selected, setSelected] = React.useState([]);
   const [MCPs, setMCPs] = React.useState([]);
   const location = useLocation();
-  const { isLogin, userID } = location.state;
+  const { userID } = location.state;
   const [workerData, setWorkerData] = React.useState([]);
-  const [isSubmit, setIsSubmit] = React.useState(false);
   const [groupData, setGroupData] = React.useState([]);
   const [selectedGroup, setSelectedGroup] = React.useState("");
   const [showVehicle, setShowVehicle] = React.useState(false);
   const [vehicle, setVehicle] = React.useState([]);
-  const [removeGroup, setRemoveGroup] = React.useState([]);
   const [isSure, setIsSure] = React.useState(false);
   const [selectViewed, setSelectViewed] = React.useState("");
   const [workerView, setSelectWorkerView] = React.useState("");
   const [showViewWorker, setShowWorker] = React.useState(false);
+  const [zoom, setZoom] = React.useState(16);
+  const [center, setCenter] = React.useState({
+    lat: 10.772792707928192,
+    lng: 106.6577516415506,
+  });
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyCTtc1rWtMOgBr86wkvAxmhUJ3THUoed8A",
+    // googleMapsApiKey: "AIzaSyCTtc1rWtMOgBr86wkvAxmhUJ3THUoed8A",
     // AIzaSyCTtc1rWtMOgBr86wkvAxmhUJ3THUoed8A
   });
 
-  const onUnmount = React.useCallback(function callback(map) {
-    setMap(null);
-  }, []);
   React.useEffect(() => {
     axios
       .get("http://localhost:8000/viewWorker")
@@ -101,16 +96,17 @@ export default function Sidebar() {
       .catch((err) => console.log(err));
   }, []);
   React.useEffect(() => {
-    console.log("hi")
+    
     if (selectViewed) {
       axios
         .post("http://localhost:8000/findWorker", { _id: selectViewed })
         .then((res) => {
           setSelectWorkerView(res.data);
-          if(!showViewWorker) setShowWorker(true)
+          if (!showViewWorker) setShowWorker(true);
         })
         .catch((err) => console.log(err));
     }
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   function handleShowBar() {
     setShowSidebar(!showSidebar);
@@ -121,22 +117,26 @@ export default function Sidebar() {
   function handleShowAssign() {
     setShowAssign(false);
   }
-  function handleViewWorker(selectView){
+  function handleViewWorker(selectView) {
     if (selectView) {
       axios
-        .post("http://localhost:8000/findWorker", { _id: selectView})
+        .post("http://localhost:8000/findWorker", { _id: selectView })
         .then((res) => {
           setSelectWorkerView(res.data);
-          if(!showViewWorker) setShowWorker(true)
+          if (!showViewWorker) setShowWorker(true);
         })
         .catch((err) => console.log(err));
     }
   }
+   function updateCenter(newCenter) {
+    setZoom(16);
+    setCenter({
+      lat: newCenter.lat,
+      lng: newCenter.lng,
+    });
+  }
   function handleShowProfile() {
     setShowProfile(!showProfile);
-  }
-  function handleIsSubmit() {
-    setIsSubmit(!isSubmit);
   }
   function handleSelected() {
     setShowAssign(false);
@@ -186,7 +186,7 @@ export default function Sidebar() {
                 <ImLocation />
               </li>
             </ul>
-            {showFeatures == "Assign task" ? (
+            {showFeatures === "Assign task" ? (
               <div className="BO--task">
                 <TaskAssignment
                   MCPs={MCPs}
@@ -194,15 +194,14 @@ export default function Sidebar() {
                   setShowAssign={setShowAssign}
                 />
               </div>
-            ) : showFeatures == "Assign vehicles" ? (
+            ) : showFeatures === "Assign vehicles" ? (
               <Vehicle
                 setIsSure={setIsSure}
-                setRemoveGroup={setRemoveGroup}
                 groupData={groupData}
                 setShowVehicle={handleShowVehicle}
                 setSelectedGroup={setSelectedGroup}
               />
-            ) : showFeatures == "View workers" ? (
+            ) : showFeatures === "View workers" ? (
               <ViewWorker
                 setSelectViewed={setSelectViewed}
                 workerData={workerData}
@@ -211,7 +210,12 @@ export default function Sidebar() {
                 handleViewWorker={handleViewWorker}
               />
             ) : (
-              <div className="BO--featuresDisplay">{showFeatures}</div>
+              <ViewMCP
+                MCPs={MCPs}
+                setMCPs={setMCPs}
+                setCenter={updateCenter}
+                workerData={workerData}
+              />
             )}
           </div>
         )}
@@ -249,21 +253,16 @@ export default function Sidebar() {
         {isLoaded && (
           <div
             className="map"
-            onClick={() =>
-              showSidebar
-                ? setShowSidebar(!showSidebar)
-                : setShowSidebar(showSidebar)
-            }
+            // onClick={() =>
+            //   showSidebar
+            //     ? setShowSidebar(!showSidebar)
+            //     : setShowSidebar(showSidebar)
+            // }
           >
             <GoogleMap
               mapContainerStyle={containerStyle}
               center={center}
-              zoom={16}
-              onUnmount={onUnmount}
-              onClick={(e) => {
-                console.log("latitude = ", e.latLng.lat());
-                console.log("longtitude = ", e.latLng.lng());
-              }}
+              zoom={zoom}
               options={mapOptions}
             >
               <Marker position={center} />
