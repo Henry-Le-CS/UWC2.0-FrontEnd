@@ -26,8 +26,8 @@ export default function Login(props) {
   React.useEffect(() => {
     if (isPassword == 1) {
       if (currentAccount.isBO)
-        navigate("/BO", { state: { isLogin: true, userID: currentAccount.id} });
-      else navigate("/worker");
+        navigate("/BO", { state: { isLogin: true, userID: currentAccount.id, _id: currentAccount._id} });
+      else navigate("/worker",{ state: { isLogin: true, userID: currentAccount.id, _id: currentAccount._id} });
     } else return;
   }, [isPassword]);
   function handleChange(event) {
@@ -49,7 +49,8 @@ export default function Login(props) {
         setIsPassword(1);
         setCurrentAccount({
           ...currentAccount,
-          id: res.data.user_id
+          id: res.data.user_id,
+          _id: res.data._id
         });
       })
       .catch((err) => {

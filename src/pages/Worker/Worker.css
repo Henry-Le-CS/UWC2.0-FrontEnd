@@ -1,0 +1,120 @@
+.BO--container {
+  height: 100%;
+  position: relative;
+  display: flex;
+}
+.BO--background {
+  background-color: black;
+  opacity: 0.5;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+}
+
+.BO--sidebar {
+  height: 100%;
+  display: flex;
+  position: absolute;
+  z-index: 2;
+  align-items: flex-start;
+  justify-content: space-between;
+  border-top-right-radius: 10px;
+}
+
+.BO--sidebar_addition {
+  background: white;
+  transition: right 0.3s ease-in-out;
+  height: 100%;
+}
+
+.BO--features {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 30px;
+  height: 58px;
+  line-height: 18px;
+  width: 100%;
+  background-color: #4caf50;
+  border-top-right-radius: 10px;
+}
+
+.BO--features li {
+  list-style-type: none;
+  text-align: center;
+  float: left;
+  height: 100%;
+  width: 100%;
+  /* line-height: 58px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.worker--features li:hover {
+  background-color: #4caf50;
+  opacity: 1;
+  cursor: initial;
+}
+
+.BO--features-box {
+  height: 100%;
+  min-width: 342px;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.BO--featuresDisplay {
+  text-align: center;
+  font-size: 50px;
+  font-weight: bolder;
+}
+
+.BO--ShowBtn {
+  height: 36px;
+  font-size: 30px;
+  height: 58px;
+  align-items: center;
+  justify-content: center;
+  /* margin-top: -5px; */
+  background-color: #4caf50;
+}
+
+.BO--ShowBtn button {
+  border: none;
+  /* padding: 20px; */
+  font-size: 30px;
+  padding: 10px;
+  align-items: center;
+  display: flex;
+  height: 56px;
+  justify-content: center;
+  background-color: white;
+  border-radius: 10px;
+  background-color: #4caf50;
+  color: white;
+}
+
+.BO--ShowBtn button:hover {
+  opacity: 70%;
+  cursor: pointer;
+  z-index: 5;
+  background-color: #d8d8d8;
+}
+
+.BO--content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 100%;
+  z-index: 1;
+}
+.map {
+  height: 100%;
+}
+.BO--task {
+  height: calc(100% - 58px);
+}
