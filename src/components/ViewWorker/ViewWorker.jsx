@@ -45,7 +45,7 @@ export default function ViewWorker(props) {
             .sort((a, b) => -b.is_avail + a.is_avail)
             .map((worker, index) => {
               return (
-                <div className="TA--MCP--display" key={index}>
+                <div className="TA--MCP--display " key={index}>
                   <div className="TA--MCP--info">
                     <h2
                       style={{

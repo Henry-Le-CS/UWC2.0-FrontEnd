@@ -1,0 +1,67 @@
+.viewTask--container{
+    height: calc(100% - 15px);
+}
+.viewTask--selection {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+.hidden{
+  width: 50%;
+  height: 40px;
+  font-size: 15px;
+  display: flex;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 15px 5px 10px 5px;
+  border: 1px solid rgba(0,0,0,0.2);
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bolder;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  color: black;
+  /* background-color: #4caf50;
+  color: white; */
+}
+.viewTask--selection button:hover{
+  border-radius: 30px;
+  transition: ease-in 0.2s;
+  cursor: pointer;
+}
+.viewTask--header{
+    margin-top: 15px;
+    text-align: center;
+    font-size: 25px;
+    font-style: italic;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #4caf50;
+}
+.viewTask--list{
+    
+}
+.add{
+    width: 50%;
+    height: 40px;
+    font-size: 15px;
+    display: flex;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 15px 5px 10px 5px;
+    border: 1px solid rgba(0,0,0,0.2);
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bolder;
+    justify-content: center;
+    align-items: center;
+    background-color: #4caf50;
+    color: white;
+    border-radius: 30px;
+    transition: ease-in 0.2s;
+    cursor: pointer;
+}
+.hidden{
+    
+}

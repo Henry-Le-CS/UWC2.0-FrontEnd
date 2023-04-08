@@ -31,7 +31,6 @@ export default function Sidebar() {
   React.useEffect(() => {
     axios.post("http://localhost:8000/findGroups", { _id: _id }).then((res) => {
       setGroup(res.data);
-      console.log(res.data)
     });
   }, []);
   return (
@@ -61,7 +60,7 @@ export default function Sidebar() {
               </li>
             </ul>
             <div className="BO--task">
-              <ViewTask />
+              <ViewTask UserID={_id} Group={group}/>
             </div>
           </div>
         )}

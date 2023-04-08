@@ -32,9 +32,9 @@
     height: 400px;
     background-color: white;
     border: none;
-    border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
 }
 .Profile--navbar{
@@ -44,6 +44,7 @@
     border-bottom: 1px solid rgba(0,0,0,0.1);
     background-color: #4CAF50;
     border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .Profile--section{
@@ -76,6 +77,7 @@
     display: flex;
     text-align: center;
     justify-content: center;
+    border-radius: 10px;
 }
 
 .close-btn:hover{

@@ -1,0 +1,73 @@
+.viewDate--list{
+    height: calc(100% - 65px - 35px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+.viewDate--selection{
+    width: 60%;
+    text-align: center;
+    height: 6%;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,0.2);
+    font-weight: 600;
+    margin-top: 10px;
+}
+.viewDate--selection:hover{
+    border-radius: 30px;
+    cursor: pointer;
+}
+.viewDate--Group{
+    height: 93%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.viewDate--viewSelection{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.viewDate--viewSelection button{
+    width: 50%;
+}
+.viewDate--viewSelection button:hover{
+    cursor: pointer;
+    border-radius: 30px;
+}
+
+.viewDate--listSelection{
+    height: 90%;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+.viewDate-list--worker{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.viewDate-list--worker h4{
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+.viewDate-list--worker h5{
+    font-size: 13px;
+    font-weight: 500;
+}
+.viewDate--MCP--display{
+    height: 70px;
+}
+.viewDate-list--worker path{
+    font-size: 30px;
+}
