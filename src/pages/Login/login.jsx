@@ -1,15 +1,10 @@
-import { Button } from "bootstrap";
 import {
-  Routes,
-  Route,
-  Link,
   useNavigate,
   useLocation,
 } from "react-router-dom";
 import React from "react";
 import "./login.css";
 import axios from "axios";
-import { ValidateAccount } from "../../utils/validate.js";
 
 export default function Login(props) {
   const location = useLocation(); //These to lines are added
@@ -19,16 +14,17 @@ export default function Login(props) {
     id: -1,
     account: "",
     password: "",
-    isBO: from == "BOBtn" ? true : false,
+    isBO: from === "BOBtn" ? true : false,
   });
   const [isPassword, setIsPassword] = React.useState(2); // 2 <-> not click login button yet
   // 0 <-> incorrect password, 1 <-> correct password
   React.useEffect(() => {
-    if (isPassword == 1) {
+    if (isPassword === 1) {
       if (currentAccount.isBO)
         navigate("/BO", { state: { isLogin: true, userID: currentAccount.id, _id: currentAccount._id} });
       else navigate("/worker",{ state: { isLogin: true, userID: currentAccount.id, _id: currentAccount._id} });
     } else return;
+        //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isPassword]);
   function handleChange(event) {
     setCurrentAccount({
@@ -39,7 +35,7 @@ export default function Login(props) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const response = await axios
+    await axios
       .post("http://localhost:8000/login", {
         account: currentAccount.account,
         password: currentAccount.password,
@@ -54,7 +50,7 @@ export default function Login(props) {
         });
       })
       .catch((err) => {
-        if (err.response.data.message == "Wrong username or password") {
+        if (err.response.data.message === "Wrong username or password") {
           setIsPassword(0);
         }
       });
@@ -66,6 +62,7 @@ export default function Login(props) {
         <img
           src={require("../../assets/UWC-logo.png")}
           className="uwc--logo-img"
+          alt="uwcLogo"
         ></img>
       </div>
       <form onSubmit={handleSubmit}>
@@ -83,11 +80,11 @@ export default function Login(props) {
             name="password"
             onChange={handleChange}
           />
-          {isPassword == 0 ? (
+          {isPassword === 0 ? (
             <h4 className="login--incorrect">
               Account or password is incorrect!
             </h4>
-          ) : isPassword == 1 ? (
+          ) : isPassword === 1 ? (
             <h4 className="login--correct">Logging in...</h4>
           ) : (
             <></>
