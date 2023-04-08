@@ -1,4 +1,4 @@
-import "./index.css";
+import "./Profile.css";
 import { RxAvatar } from "react-icons/rx";
 import React from "react";
 import { AiFillIdcard } from "react-icons/ai";

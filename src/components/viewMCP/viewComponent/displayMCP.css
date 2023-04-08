@@ -1,0 +1,80 @@
+.displayMCP--container {
+  height: calc(100% - 58px);
+  max-width: 40vh;
+  /* padding: px; */
+}
+.displayMCP--Btn {
+  display: flex;
+  background-image: url(https://maps.gstatic.com/tactile/pane/default_geocode-2x.png);
+  /* background-position: cover;
+     */
+  background-repeat: none;
+  background-size: cover;
+  height: 30%;
+}
+.displayMCP--Btn button {
+  border: none;
+  margin: 15px 5px 5px 5px;
+}
+.displayMCP--Btn button:hover {
+  opacity: 0.9;
+  border: 1px solid;
+}
+.displayMCP--Info {
+  height: calc(70% -  20px);
+  margin: 10px 5px 5px 5px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  padding: 10px;
+}
+.displayMCP--Info > h1{
+    font-weight: 600;
+    text-align: left;
+    font-size: 25px;
+    letter-spacing: 1.5px;
+    margin-bottom: 5px;
+}
+.displayMCP--description {
+}
+.displayMCP--description > h2{
+    font-weight: 600;
+    text-align: left;
+    font-size: 20px;
+    letter-spacing: 1px;
+    margin: 10px 0 10px 0;
+
+}
+
+.displayMCP--desBtn{
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+    border-radius: 30px;
+    border: 1px solid #4caf50;
+    background-color: #4caf50;
+    padding: 10px;
+    margin-top: 15px
+}
+.displayMCP--desBtn:hover{
+    cursor: pointer;
+    border: 1px solid;
+    opacity: 0.8;
+}
+.displayMCP--description p{
+    max-height: 300px;
+    overflow-y: scroll;
+}
+.displayMCP--description p::-webkit-scrollbar{
+    display: none;
+}
+.displayMCP--text{
+    width: 100%;
+    height: 40vh;
+    border-radius: 30px;
+    resize: none;
+    text-indent: 13px;
+    padding: 5px;
+}
+.displayMCP--text::-webkit-scrollbar{
+    display: none;
+}

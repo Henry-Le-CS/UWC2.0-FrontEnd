@@ -1,0 +1,33 @@
+.viewWorker--container{
+    height: calc(100% - 68px);
+    z-index: 2;
+}
+.viewWorker--assignBtn:hover{
+    background-color: #4CAF50;
+    opacity: 1;
+    cursor: initial;
+}
+.viewWorker--assignBtn{
+    border-radius: 10px;
+}
+.viewWorker--Btn{
+    display: flex;
+    justify-content: space-between;
+}
+.viewWorker--Btn button{
+    font-size: 30px;
+    background-color: inherit;
+    border: none;
+    color: #4CAF50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+.viewWorker--Btn button > *{
+    z-index: 1;
+}
+.viewWorker--Btn button:hover{
+    opacity: 0.7;
+    cursor: pointer;
+}
