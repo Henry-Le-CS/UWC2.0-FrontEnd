@@ -1,5 +1,5 @@
 .viewTask--container{
-    height: calc(100% - 15px);
+    height: calc(100%);
 }
 .viewTask--selection {
   display: flex;

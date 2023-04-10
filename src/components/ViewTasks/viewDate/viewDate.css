@@ -1,3 +1,6 @@
+select:focus{
+    outline: none;
+}
 .viewDate--list{
     height: calc(100% - 65px - 35px);
     display: flex;
@@ -28,6 +31,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+
 }
 
 .viewDate--viewSelection{
@@ -49,6 +53,10 @@
     padding: 10px;
     border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 10px;
+    overflow-y: scroll;
+}
+.viewDate--listSelection::-webkit-scrollbar{
+    display: none;
 }
 .viewDate-list--worker{
     display: flex;

@@ -17,7 +17,6 @@ export default function Sidebar() {
   const [showSidebar, setShowSidebar] = useState(false);
   const location = useLocation();
   const { _id } = location.state;
-  const [zoom, setZoom] = React.useState(16);
   const [group, setGroup] = React.useState([]);
   const [center, setCenter] = React.useState({
     lat: 10.772792707928192,
@@ -32,6 +31,7 @@ export default function Sidebar() {
     axios.post("http://localhost:8000/findGroups", { _id: _id }).then((res) => {
       setGroup(res.data);
     });
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className="BO--container">
@@ -52,33 +52,23 @@ export default function Sidebar() {
             <ul className="BO--features worker--features">
               <div className="BO--ShowBtn ">
                 <button onClick={() => setShowSidebar(false)}>
-                  <FaBars />
+                  <FaTasks />
                 </button>
               </div>
-              <li>
-                <FaTasks />
-              </li>
             </ul>
             <div className="BO--task">
-              <ViewTask UserID={_id} Group={group}/>
+              <ViewTask setCenter={setCenter} UserID={_id} Group={group} />
             </div>
           </div>
         )}
       </nav>
       <main className="BO--content">
         {isLoaded && (
-          <div
-            className="map"
-            onClick={() =>
-              showSidebar
-                ? setShowSidebar(!showSidebar)
-                : setShowSidebar(showSidebar)
-            }
-          >
+          <div className="map">
             <GoogleMap
               mapContainerStyle={containerStyle}
               center={center}
-              zoom={zoom}
+              zoom={16}
               options={mapOptions}
             >
               <Marker position={center} />

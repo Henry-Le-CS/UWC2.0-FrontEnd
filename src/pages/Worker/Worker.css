@@ -52,6 +52,9 @@
   justify-content: center;
   color: white;
 }
+.worker--features{
+  justify-content: flex-start;
+}
 
 .worker--features li:hover {
   background-color: #4caf50;

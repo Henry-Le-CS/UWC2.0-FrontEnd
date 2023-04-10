@@ -1,21 +1,34 @@
-import "./displayMCP.css";
 import React from "react";
-import axios from "axios"
-export default function DisplayMCP(props) {
-  const [MCP,setMCP]=React.useState(props.MCPs.filter((MCP) => MCP._id === props.selectedMCP._id)[0]);
+import axios from "axios";
+import "./viewDetail.css";
+function ViewDetail(props) {
+  const [MCP, setMCP] = React.useState(
+    props.MCPs.filter((MCP) => MCP._id === props.selectedMCP._id)[0]
+  );
   const [addText, setAddText] = React.useState(false);
   const [Text, setText] = React.useState(MCP.description);
-  console.log(MCP.description)
-  function handleSubmit(event){
+  function handleSubmit(event) {
     event.preventDefault();
-    axios.post("http://localhost:8000/writeDescription",{
+    axios
+      .post("http://localhost:8000/writeDescription", {
         _id: MCP._id,
-        description: Text
-    }).then(res=>{
-        console.log(res.data.filter(mcp=>mcp._id === props.selectedMCP._id)[0]._id, "here")
-        setMCP(res.data.filter(mcp=>mcp._id === props.selectedMCP._id)[0])
-        props.setMCPs(res.data)
+        description: Text,
+      })
+      .then((res) => {
+        setMCP(res.data.filter((mcp) => mcp._id === props.selectedMCP._id)[0]);
+        props.setMCP(res.data);
         setAddText(false);
+      });
+  }
+  function handleMark(event) {
+    event.preventDefault();
+    axios.post("http://localhost:8000/markStatus", {
+      isCompleted: MCP.isCompleted,
+      _id: MCP._id,
+      location: MCP.location,
+    }).then(res=>{
+        setMCP(res.data.filter((mcp) => mcp._id === props.selectedMCP._id)[0]);
+        props.setMCP(res.data);
     })
   }
   return (
@@ -25,7 +38,7 @@ export default function DisplayMCP(props) {
           className="TA--assignBtn vehicle--assignBtn"
           onClick={(event) => {
             event.preventDefault();
-            props.setShowContent("list");
+            props.setViewPage("");
           }}
         >
           Back
@@ -43,20 +56,20 @@ export default function DisplayMCP(props) {
           Re-center
         </button>
       </div>
-      <div className="displayMCP--Info">
+      <div className="displayMCP--Info viewDetail--info">
         <h1>{MCP.location}</h1>
-        {MCP.isAssigned ? (
-          <h5 style={{ color: "red", fontWeight: "bold", fontSize: "15px" }}>
-            Status: Occupied
+        {MCP.isCompleted ? (
+          <h5 style={{ color: "green", fontWeight: "bold", fontSize: "15px" }}>
+            Completed
           </h5>
         ) : (
-          <h5 style={{ color: "green", fontWeight: "bold", fontSize: "15px" }}>
-            Status: Unoccupied
+          <h5 style={{ color: "red", fontWeight: "bold", fontSize: "15px" }}>
+            Incompleted
           </h5>
         )}
         <div className="displayMCP--description">
           <h2>Description:</h2>
-          {MCP.description&&!addText? (
+          {MCP.description && !addText ? (
             <>
               <p>{MCP.description}</p>
               <button
@@ -65,6 +78,11 @@ export default function DisplayMCP(props) {
                   setAddText(true);
                 }}
                 className="displayMCP--desBtn"
+                style={{
+                  textTransform: "uppercase",
+                  color: "white",
+                  fontWeight: "bolder",
+                }}
               >
                 Edit
               </button>
@@ -78,34 +96,45 @@ export default function DisplayMCP(props) {
                 cols="100%"
                 rows="10"
                 value={Text}
-                onChange={(event)=>setText(event.target.value)}
+                onChange={(event) => setText(event.target.value)}
               >
                 {MCP.description}
               </textarea>
-              <button
-                className="displayMCP--desBtn"
-                type="submit"
-              >
+              <button className="displayMCP--desBtn" type="submit">
                 Save
               </button>
             </form>
           ) : (
             <>
-              <p style={{fontStyle: "italic"}}>Not yet added</p>
+              <p style={{ fontStyle: "italic" }}>Not yet added</p>
               <button
                 onClick={(e) => {
                   e.preventDefault();
                   setAddText(true);
                 }}
                 className="displayMCP--desBtn"
-                s
               >
                 Add description
               </button>
             </>
           )}
         </div>
+        {!addText ? (
+          <button
+            className={
+              "viewDetail--CompleteBtn" +
+              (MCP.isCompleted ? " incomplete" : " complete")
+            }
+            onClick={handleMark}
+          >
+            Mark as {MCP.isCompleted ? "Incompleted" : "Completed"}
+          </button>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );
 }
+
+export default ViewDetail;

@@ -1,0 +1,32 @@
+.viewDetail--info {
+  position: relative;
+}
+.viewDetail--CompleteBtn {
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  right: 5%;
+  width: 90%;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  text-transform: uppercase;
+  font-weight: bolder;
+  letter-spacing: 2px;
+}
+.complete {
+  background-color: #4caf50;
+  color: white;
+}
+.incomplete {
+  background-color: #f67280;
+  color: white;
+}
+.viewDetail--CompleteBtn:hover {
+  opacity: 0.8;
+  border-radius: 30px;
+  cursor: pointer;
+  border: 1px solid;
+  transition: ease 0.5s;
+}
