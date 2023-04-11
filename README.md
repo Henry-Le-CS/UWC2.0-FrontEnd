@@ -1,7 +1,8 @@
-# Getting Started with Create React App
+# UWC 2.0 Front End
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-Please make sure you run a parallel terminal for the server to work. The link to the git:  https://github.com/Henry-Le-CS/UWC-2.0-Backend.git
+This is the Front End source for our UWC 2.0 project. Leave a star if you think this is interesting.
+
+To run the code, please make sure you run a parallel terminal for the server to work. The link to the github source:  https://github.com/Henry-Le-CS/UWC-2.0-Backend.git
 Split two terminals, in the terminal that contains backend server, you can run
 ### `npm install`
 
@@ -13,8 +14,6 @@ If you something is running on port 3000 or 8000, make sure to kill them by:
 
 ### `lsof -i tcp:YOUR_PORT`
 ### `kill -9 PID`
-
-Then you can run the frontend as below:
 
 Some accounts you can use to experience:
 
@@ -30,8 +29,7 @@ Password: henryle@hcmut.edu.vn
 Username: nhatkhangcse@hcmut.edu.vn
 Password: 1
 
-
-## Available Scripts
+In the folder that contains the Frontend, you can run as below: 
 
 In the project directory, you can run:
 ### `npm install`
