@@ -1,7 +1,9 @@
 import React from "react";
 import axios from "axios";
+import { useState } from "react";
 import { AiFillCloseCircle } from "react-icons/ai";
 import "./detail.css";
+import Calendar from "react-calendar";
 export default function Detail(props) {
   function handleClose() {
     props.setShowWorker(false);
@@ -26,6 +28,12 @@ export default function Detail(props) {
   const [selectedView, setSelectedView] = React.useState("MCPs");
   const [MCP, setMCP] = React.useState([]);
   const [CoWorkers, setCoWorkers] = React.useState({});
+  const [showCalendar, setShowCalendar] = useState(false);
+
+  const handleCalendarClick = () => {
+    setShowCalendar(!showCalendar);
+  };
+
   React.useState(async () => {
     if (selectedDate) {
       const [filteredGroups] = groups.filter((group) => {
@@ -148,6 +156,13 @@ export default function Detail(props) {
                   Co-worker
                 </option>
               </select>
+            </div>
+            <div>
+              <button onClick={handleCalendarClick}>Calendar</button>
+              <div className={`calendar-container ${showCalendar ? "" : "hide"}`}>
+                <Calendar />
+              </div>
+
             </div>
           </div>
           <div className="detail--display">
