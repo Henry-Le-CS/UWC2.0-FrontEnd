@@ -7,10 +7,14 @@ function ChatSection(props) {
       <ul>
         {props.chatList.map((chat) => (
           <li key={chat.message}>
-            <button onClick={() => props.handleChatClick(chat._id)}>
+            {/* <button onClick={() => props.handleChatClick(chat._id)}>
               <img src={chat.target_url} alt={chat.message} />
               {chat.name}
-            </button>
+            </button> */}
+            <img src={chat.target_url} alt={chat.name} />
+            <div>
+              <span>{chat.timestamp}</span>
+            </div>
           </li>
         ))}
       </ul>

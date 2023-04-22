@@ -13,6 +13,7 @@ import ChatSection from "./Chat/chat";
 
 function Profile(props) {
   const [chatList, setChatList] = useState({});
+  const [addMessage] = useState({});
   const [profileSection, setProfileSection] = React.useState("");
   const [profileInfo, setProfile] = React.useState({});
   const [chatConversation, setChatConversation] = React.useState({});
@@ -34,6 +35,16 @@ function Profile(props) {
       });
   }, []);
 
+  // useEffect addMessages
+  useEffect(() => {
+    //console.log(props.userID);
+    axios
+      .post("http://localhost:8000/infoBO/addMessages", { user_id: props.userID })
+      .then((res) => {
+        addMessage(res.data);
+      });
+  }, []);
+  // addMessage
 
   function handleProfileClick(clickedProfile) {
 
@@ -44,7 +55,7 @@ function Profile(props) {
   function handleChatClick(chatID) {
     // Fetch chat conversation and display it
     axios
-      .get(`http://localhost:8000/chat/${chatID}`)
+      .get("http://localhost:8000/conversation", { params: { chatID } })
       .then((res) => {
         // Display chat section with conversation data
         setProfileSection("chat");
@@ -89,7 +100,7 @@ function Profile(props) {
             <Card profileInfo={profileInfo}></Card>
           ) : profileSection == "chat" ? (
             <div id="chat">
-              <ChatSection chatList={chatList} handleChatClick={handleChatClick} />
+              <ChatSection chatList={chatList} handleChatClick={handleChatClick}/>
             </div>
 
           ) : (
