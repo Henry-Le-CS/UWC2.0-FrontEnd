@@ -1,16 +1,23 @@
 import "./Profile.css";
 import { RxAvatar } from "react-icons/rx";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { AiFillIdcard } from "react-icons/ai";
 import { BsFillPersonVcardFill } from "react-icons/bs";
 import { BsFillChatDotsFill } from "react-icons/bs";
 import { AiFillCloseCircle } from "react-icons/ai";
 import Card from "./Card/Card";
 import axios from "axios";
+import ChatSection from "./Chat/chat";
+// add eventListerner to the form
+
+
 function Profile(props) {
+  const [chatList, setChatList] = useState({});
   const [profileSection, setProfileSection] = React.useState("");
   const [profileInfo, setProfile] = React.useState({});
-  React.useEffect(() => {
+  const [chatConversation, setChatConversation] = React.useState({});
+
+  useEffect(() => {
     axios
       .post("http://localhost:8000/infoBO", { user_id: props.userID })
       .then((res) => {
@@ -18,9 +25,33 @@ function Profile(props) {
       });
   }, []);
 
+  useEffect(() => {
+    //console.log(props.userID);
+    axios
+      .post("http://localhost:8000/infoBO/listMessages", { user_id: props.userID })
+      .then((res) => {
+        setChatList(res.data);
+      });
+  }, []);
+
+
   function handleProfileClick(clickedProfile) {
+
     setProfileSection(clickedProfile);
+
   }
+
+  function handleChatClick(chatID) {
+    // Fetch chat conversation and display it
+    axios
+      .get(`http://localhost:8000/chat/${chatID}`)
+      .then((res) => {
+        // Display chat section with conversation data
+        setProfileSection("chat");
+        setChatConversation(res.data);
+      });
+  }
+
   return (
     <div className="Profile--container">
       {!props.showProfile ? (
@@ -38,7 +69,9 @@ function Profile(props) {
                 className="Profile--section--component"
               />
               <BsFillChatDotsFill
+
                 onClick={() => handleProfileClick("chat")}
+
                 className="Profile--section--component"
               />
             </div>
@@ -55,7 +88,10 @@ function Profile(props) {
           {profileSection == "profile" ? (
             <Card profileInfo={profileInfo}></Card>
           ) : profileSection == "chat" ? (
-            <div>Chat goes here</div>
+            <div id="chat">
+              <ChatSection chatList={chatList} handleChatClick={handleChatClick} />
+            </div>
+
           ) : (
             <Card profileInfo={profileInfo} />
           )}
@@ -64,4 +100,5 @@ function Profile(props) {
     </div>
   );
 }
+
 export default Profile;

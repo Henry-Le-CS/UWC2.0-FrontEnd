@@ -21,13 +21,13 @@
     background-color: #4CAF50;
 }
 
-.Profile--showBtn button:hover{
+.Profile--showBtn button:hover {
     opacity: 70%;
     cursor: pointer;
     background-color: #D8D8D8;
 }
 
-.Profile--Display{
+.Profile--Display {
     width: 450px;
     height: 400px;
     background-color: white;
@@ -37,24 +37,25 @@
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
 }
-.Profile--navbar{
+
+.Profile--navbar {
     height: 58px;
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     background-color: #4CAF50;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
 
-.Profile--section{
+.Profile--section {
     display: flex;
     align-items: center;
     width: 50%;
     font-size: 30px;
 }
 
-.Profile--section--component{
+.Profile--section--component {
     font-size: 30px;
     border: none;
     width: 93px;
@@ -63,15 +64,16 @@
     color: white;
 }
 
-.Profile--section--component:hover{
+.Profile--section--component:hover {
     opacity: 70%;
     background-color: #D8D8D8;
     cursor: pointer;
     border-radius: 15px;
 }
-.close-btn{
+
+.close-btn {
     background-color: #4CAF50;
-    border:none;
+    border: none;
     width: 52px;
     align-items: center;
     display: flex;
@@ -80,12 +82,57 @@
     border-radius: 10px;
 }
 
-.close-btn:hover{
+.close-btn:hover {
     background-color: red;
     cursor: pointer;
     border-radius: 10px;
 }
 
-.Profile--section > button{
+#chat {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
 
-} 
+.chat-header {
+    padding: 10px;
+    background-color: #f1f1f1;
+}
+
+.chat-messages {
+    flex-grow: 1;
+    overflow-y: scroll;
+    max-height: 330px;
+}
+
+.message {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.from-user1 {
+    align-self: flex-start;
+    background-color: #e6e6ff;
+}
+
+.from-user2 {
+    align-self: flex-end;
+    background-color: #ccffff;
+}
+
+.message-content {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.message-timestamp {
+    font-size: 12px;
+    color: #999;
+}
+
+#chat-form {
+    position: absolute;
+    bottom: 5px; /* adjust the value to move the chat form up */
+  }
