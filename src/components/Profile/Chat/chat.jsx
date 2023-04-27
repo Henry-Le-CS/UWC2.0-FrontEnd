@@ -1,25 +1,21 @@
-import React from "react";
-
-function ChatSection(props) {
+const Chat = ({descendingOrderMessages}) => {
   return (
-    <div className="chat-section">
-      <h2>Chat List</h2>
-      <ul>
-        {props.chatList.map((chat) => (
-          <li key={chat.message}>
-            {/* <button onClick={() => props.handleChatClick(chat._id)}>
-              <img src={chat.target_url} alt={chat.message} />
-              {chat.name}
-            </button> */}
-            <img src={chat.target_url} alt={chat.name} />
-            <div>
-              <span>{chat.timestamp}</span>
-            </div>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+      <>
+          <div className="chat-display">
+              {descendingOrderMessages.map((message, _index) => (
+                  <div key={_index}>
+                      <div className="chat-message-header">
+                          <div className="img-container">
+                              <img src={message.img} alt={message.name + ' profile'}/>
+                          </div>
+                          <p>{message.name}</p>
+                      </div>
+                      <p>{message.message}</p>
+                  </div>
+              ))}
+          </div>
+      </>
+  )
 }
 
-export default ChatSection;
+export default Chat

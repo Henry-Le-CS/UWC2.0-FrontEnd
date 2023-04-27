@@ -1,22 +1,17 @@
 import "./Profile.css";
 import { RxAvatar } from "react-icons/rx";
 import React, { useState, useEffect } from "react";
-import { AiFillIdcard } from "react-icons/ai";
 import { BsFillPersonVcardFill } from "react-icons/bs";
 import { BsFillChatDotsFill } from "react-icons/bs";
 import { AiFillCloseCircle } from "react-icons/ai";
 import Card from "./Card/Card";
 import axios from "axios";
-import ChatSection from "./Chat/chat";
-// add eventListerner to the form
+import ChatContainer from "./Chat/ChatContainer";
 
 
 function Profile(props) {
-  const [chatList, setChatList] = useState({});
-  const [addMessage] = useState({});
   const [profileSection, setProfileSection] = React.useState("");
   const [profileInfo, setProfile] = React.useState({});
-  const [chatConversation, setChatConversation] = React.useState({});
 
   useEffect(() => {
     axios
@@ -26,41 +21,8 @@ function Profile(props) {
       });
   }, []);
 
-  useEffect(() => {
-    //console.log(props.userID);
-    axios
-      .post("http://localhost:8000/infoBO/listMessages", { user_id: props.userID })
-      .then((res) => {
-        setChatList(res.data);
-      });
-  }, []);
-
-  // useEffect addMessages
-  useEffect(() => {
-    //console.log(props.userID);
-    axios
-      .post("http://localhost:8000/infoBO/addMessages", { user_id: props.userID })
-      .then((res) => {
-        addMessage(res.data);
-      });
-  }, []);
-  // addMessage
-
   function handleProfileClick(clickedProfile) {
-
     setProfileSection(clickedProfile);
-
-  }
-
-  function handleChatClick(chatID) {
-    // Fetch chat conversation and display it
-    axios
-      .get("http://localhost:8000/conversation", { params: { chatID } })
-      .then((res) => {
-        // Display chat section with conversation data
-        setProfileSection("chat");
-        setChatConversation(res.data);
-      });
   }
 
   return (
@@ -100,9 +62,12 @@ function Profile(props) {
             <Card profileInfo={profileInfo}></Card>
           ) : profileSection == "chat" ? (
             <div id="chat">
-              <ChatSection chatList={chatList} handleChatClick={handleChatClick}/>
+              <div class="message received">Hi there, how are you doing?</div>
+              <div class="message sent">I'm doing pretty well, thanks for asking. How about you?</div>
+              <div class="message received">I'm doing well too, thanks for asking. What have you been up to?</div>
+              <div class="message sent">Heading for MCP1</div>
+              <div class="message received">OK, have a good day</div>
             </div>
-
           ) : (
             <Card profileInfo={profileInfo} />
           )}
